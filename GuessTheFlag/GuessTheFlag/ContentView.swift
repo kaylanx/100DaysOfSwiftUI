@@ -9,11 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
   
+  private let numberOfQuestions = 8
+  
   @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
   @State private var correctAnswer = Int.random(in: 0...2)
   
+  @State private var currentQuestion = 0
+  @State private var score = 0
   @State private var showingScore = false
   @State private var scoreTitle = ""
+  @State private var scoreDescription = ""
+  @State private var alertButtonText = "Continue"
   
   var body: some View {
     ZStack {
@@ -61,7 +67,7 @@ struct ContentView: View {
         
         Spacer()
         Spacer()
-        Text("Score ???")
+        Text("Score \(score)")
           .foregroundColor(.white)
           .font(.title.bold())
         Spacer()
@@ -69,20 +75,38 @@ struct ContentView: View {
       .padding()
     }
     .alert(scoreTitle, isPresented: $showingScore) {
-      Button("Continue", action: askQuestion)
+      Button(alertButtonText, action: askQuestion)
     } message: {
-      Text("Your score is ???")
+      Text(scoreDescription)
     }
   }
   
   private func flagTapped(_ number: Int) {
-    scoreTitle = number == correctAnswer ? "Correct" : "Wrong"
+    alertButtonText = "Continue"
+    if number == correctAnswer {
+      scoreTitle = "Correct"
+      score = score + 1
+      scoreDescription = "Your score is \(score)"
+    } else {
+      scoreTitle = "Wrong"
+      scoreDescription = "That's the flag of \(countries[number])"
+    }
+    
+    if currentQuestion == numberOfQuestions {
+      alertButtonText = "Start again"
+      scoreTitle = "Quiz Over"
+      scoreDescription = "Your final score is \(score)"
+      currentQuestion = 0
+      score = 0
+    }
+   
     showingScore = true
   }
   
   private func askQuestion() {
     countries.shuffle()
     correctAnswer = Int.random(in: 0...2)
+    currentQuestion = currentQuestion + 1
   }
   
 }
