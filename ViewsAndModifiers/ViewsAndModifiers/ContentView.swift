@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+
+// Create a custom ViewModifier (and accompanying View extension)
+// that makes a view have a large, blue font suitable for prominent
+// titles in a view.
+
+struct ProminentTitle: ViewModifier {
+  
+  func body(content: Content) -> some View {
+    content
+      .font(.largeTitle)
+      .foregroundColor(.blue)
+  }
+}
+
 struct WaterMark: ViewModifier {
   
   var text: String
@@ -43,14 +57,22 @@ extension View {
   func watermarked(with text: String) -> some View {
     modifier(WaterMark(text: text))
   }
+  
+  func prominentitle() -> some View {
+    modifier(ProminentTitle())
+  }
 }
 
 struct ContentView: View {
   
   var body: some View {
-    Color.blue
-      .frame(width:200, height: 200)
-      .watermarked(with: "poop")
+    VStack {
+      Color.blue
+        .frame(width:200, height: 200)
+        .watermarked(with: "poop")
+      Text("Chicken")
+        .prominentitle()
+    }
   }
 }
 
