@@ -11,6 +11,7 @@
 		587B12B227DFDBF000F887D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B12B127DFDBF000F887D2 /* ContentView.swift */; };
 		587B12B427DFDBF900F887D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587B12B327DFDBF900F887D2 /* Assets.xcassets */; };
 		587B12B727DFDBF900F887D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587B12B627DFDBF900F887D2 /* Preview Assets.xcassets */; };
+		587B12BE27E1389000F887D2 /* PlaygroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587B12BD27E1388F00F887D2 /* PlaygroundContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		587B12B127DFDBF000F887D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		587B12B327DFDBF900F887D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		587B12B627DFDBF900F887D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		587B12BD27E1388F00F887D2 /* PlaygroundContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaygroundContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		587B12AE27DFDBF000F887D2 /* WeSplit */ = {
 			isa = PBXGroup;
 			children = (
+				587B12BD27E1388F00F887D2 /* PlaygroundContentView.swift */,
 				587B12AF27DFDBF000F887D2 /* WeSplitApp.swift */,
 				587B12B127DFDBF000F887D2 /* ContentView.swift */,
 				587B12B327DFDBF900F887D2 /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				587B12BE27E1389000F887D2 /* PlaygroundContentView.swift in Sources */,
 				587B12B227DFDBF000F887D2 /* ContentView.swift in Sources */,
 				587B12B027DFDBF000F887D2 /* WeSplitApp.swift in Sources */,
 			);
