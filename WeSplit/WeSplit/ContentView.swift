@@ -71,8 +71,10 @@ struct ContentView: View {
         
         Section {
           Text(grandTotal, format: currency)
+            .foregroundColor(tipPercentage == 0 ? .red : .primary)
         } header: {
-          Text("Grand todal")
+          Text("Grand total")
+            .foregroundColor(tipPercentage == 0 ? .red : .primary)
         }
       }
       .navigationBarTitle("WeSplit")
