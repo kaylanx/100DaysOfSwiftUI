@@ -45,9 +45,17 @@ struct ContentView: View {
         }
     }
 
+    /// Challenges
+    ///  1. Disallow answers that are shorter than three letters or are just our start word.
+
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard answer.count > 0 else { return }
+
+        guard isCorrectLength(word: answer) else {
+            wordError(title: "Word too small", message: "Come on, you can think of words that are longer than that.")
+            return
+        }
 
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more original")
@@ -61,6 +69,11 @@ struct ContentView: View {
 
         guard isReal(word: answer) else {
             wordError(title: "Word not recognised", message: "You can't just make them up, you know!")
+            return
+        }
+
+        guard !isRootWord(word: answer) else {
+            wordError(title: "Nice try", message: "Really? Stop trying to cheat!")
             return
         }
 
@@ -106,6 +119,14 @@ struct ContentView: View {
         let missSpelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
 
         return missSpelledRange.location == NSNotFound
+    }
+
+    func isCorrectLength(word: String) -> Bool {
+        word.count >= 3
+    }
+
+    func isRootWord(word: String) -> Bool {
+        word == rootWord
     }
 
     func wordError(title: String, message: String) {
