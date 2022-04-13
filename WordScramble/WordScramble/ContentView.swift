@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// Challenges
+///  1. Disallow answers that are shorter than three letters or are just our start word.
+///  2. Add a toolbar button that calls startGame(), so users can restart with a new word whenever they want to.
+///  3. Put a text view somewhere so you can track and show the player’s score for a given root word. How you calculate score is down to you, but something involving number of words and their letter count would be reasonable.
+
 struct ContentView: View {
 
     @State private var usedWords = [String]()
@@ -23,6 +28,7 @@ struct ContentView: View {
                 Section {
                     TextField("Enter your word", text: $newWord)
                         .autocapitalization(.none)
+                        .disableAutocorrection(true)
                 }
 
                 Section {
@@ -42,11 +48,14 @@ struct ContentView: View {
             } message: {
                 Text(errorMessage)
             }
+            .toolbar {
+                Button("New word") {
+                    startGame()
+                }
+            }
         }
     }
 
-    /// Challenges
-    ///  1. Disallow answers that are shorter than three letters or are just our start word.
 
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
@@ -84,6 +93,9 @@ struct ContentView: View {
     }
 
     func startGame() {
+        usedWords.removeAll()
+        newWord = ""
+
         if let startWordUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordUrl) {
                 let allwords = startWords.components(separatedBy: "\n")
