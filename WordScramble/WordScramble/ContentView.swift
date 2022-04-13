@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @State private var playerScore = 0
 
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -30,12 +31,17 @@ struct ContentView: View {
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                 }
-
                 Section {
-                    ForEach(usedWords, id: \.self) { word in
-                        HStack {
-                            Image(systemName: "\(word.count).circle.fill")
-                            Text(word)
+                    Text("Your score \(playerScore)")
+                }
+
+                if !usedWords.isEmpty {
+                    Section("Words") {
+                        ForEach(usedWords, id: \.self) { word in
+                            HStack {
+                                Image(systemName: "\(word.count).circle.fill")
+                                Text(word)
+                            }
                         }
                     }
                 }
@@ -55,7 +61,6 @@ struct ContentView: View {
             }
         }
     }
-
 
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
@@ -86,6 +91,8 @@ struct ContentView: View {
             return
         }
 
+        playerScore += answer.count + 1
+
         withAnimation {
             usedWords.insert(answer, at: 0)
         }
@@ -95,6 +102,7 @@ struct ContentView: View {
     func startGame() {
         usedWords.removeAll()
         newWord = ""
+        playerScore = 0
 
         if let startWordUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordUrl) {
