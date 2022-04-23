@@ -33,7 +33,9 @@ struct ContentView: View {
     @State private var scoreDescription = ""
     @State private var alertButtonText = "Continue"
 
-    @State private var animationAmount = [0.0, 0.0, 0.0]
+    @State private var rotationAnimationAmount = [0.0, 0.0, 0.0]
+    @State private var fadeAnimationAmount = [1.0, 1.0, 1.0]
+
 
 
     var body: some View {
@@ -67,18 +69,25 @@ struct ContentView: View {
                     ForEach(0..<3) { number in
                         Button {
                             withAnimation {
-                                animationAmount[number] += 360
+                                for i in 0..<3 {
+                                    if i != number {
+                                        fadeAnimationAmount[i] = 0.25
+                                    }
+                                }
+                                rotationAnimationAmount[number] += 360
                             }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                                 flagTapped(number)
                             }
                         } label: {
                             FlagImage(countryName: countries[number])
                         }
+                        .opacity(fadeAnimationAmount[number])
                         .rotation3DEffect(
-                            .degrees(animationAmount[number]),
+                            .degrees(rotationAnimationAmount[number]),
                             axis: (x: 0, y: 1, z: 0)
                         )
+
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -128,6 +137,7 @@ struct ContentView: View {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         currentQuestion = currentQuestion + 1
+        fadeAnimationAmount = [1.0, 1.0, 1.0]
     }
 
 }
