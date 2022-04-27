@@ -29,13 +29,21 @@ struct ContentView: View {
     @State private var currentQuestion = 0
     @State private var score = 0
     @State private var showingScore = false
-    @State private var scoreTitle = ""
-    @State private var scoreDescription = ""
-    @State private var alertButtonText = "Continue"
+    //    @State private var scoreTitle = ""
+    //    @State private var scoreDescription = ""
+    //    @State private var alertButtonText = "Continue"
 
     @State private var rotationAnimationAmount = [0.0, 0.0, 0.0]
     @State private var fadeAnimationAmount = [1.0, 1.0, 1.0]
 
+    private static let guessTheFlagText = "Guess the flag"
+    private static let tapTheFlagOf = "Tap the flag of"
+
+
+    @State private var screenTitle = guessTheFlagText
+    @State private var screenFooter = "Score 0"
+
+    @State private var tapText = tapTheFlagOf
 
 
     var body: some View {
@@ -54,17 +62,22 @@ struct ContentView: View {
             VStack {
                 Spacer()
 
-                Text("Guess the flag")
+                Text(screenTitle)
                     .font(.largeTitle.bold())
                     .foregroundColor(.white)
+                    .animation(.easeInOut, value: showingScore)
 
                 VStack(spacing: 15) {
                     VStack {
-                        Text("Tap the flag of")
+                        Text(tapText)
                             .font(.subheadline.weight(.heavy))
                             .foregroundStyle(.secondary)
+                            .animation(.easeInOut, value: tapText)
+
                         Text(countries[correctAnswer])
                             .font(.largeTitle.weight(.semibold))
+                            .animation(.easeInOut, value: correctAnswer)
+
                     }
                     ForEach(0..<3) { number in
                         Button {
@@ -87,7 +100,7 @@ struct ContentView: View {
                             .degrees(rotationAnimationAmount[number]),
                             axis: (x: 0, y: 1, z: 0)
                         )
-
+                        .disabled(showingScore)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -97,35 +110,40 @@ struct ContentView: View {
 
                 Spacer()
                 Spacer()
-                Text("Score \(score)")
+                Text(screenFooter)
                     .foregroundColor(.white)
                     .font(.title.bold())
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .animation(.linear, value: screenFooter)
                 Spacer()
             }
             .padding()
         }
-        .alert(scoreTitle, isPresented: $showingScore) {
-            Button(alertButtonText, action: askQuestion)
-        } message: {
-            Text(scoreDescription)
+        .onTapGesture {
+            if showingScore {
+                askQuestion()
+                showingScore = false
+            }
         }
     }
 
     private func flagTapped(_ number: Int) {
-        alertButtonText = "Continue"
         if number == correctAnswer {
-            scoreTitle = "Correct"
+            screenTitle = "Correct"
             score = score + 1
-            scoreDescription = "Your score is \(score)"
+            screenFooter = "Score \(score)"
         } else {
-            scoreTitle = "Wrong"
-            scoreDescription = "That's the flag of \(countries[number])"
+            screenTitle = "Wrong"
+            screenFooter = "That's the flag of \(countries[number])"
         }
 
+        tapText = "Tap to continue"
+
         if currentQuestion == numberOfQuestions {
-            alertButtonText = "Start again"
-            scoreTitle = "Quiz Over"
-            scoreDescription = "Your final score is \(score)"
+            //            alertButtonText = "Start again"
+            screenTitle = "Quiz Over"
+            //            scoreDescription = "Your final score is \(score)"
             currentQuestion = 0
             score = 0
         }
@@ -136,8 +154,13 @@ struct ContentView: View {
     private func askQuestion() {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
+        tapText = ContentView.tapTheFlagOf
         currentQuestion = currentQuestion + 1
+        screenTitle = ContentView.guessTheFlagText
         fadeAnimationAmount = [1.0, 1.0, 1.0]
+
+        screenFooter = "Score \(score)"
+
     }
 
 }
