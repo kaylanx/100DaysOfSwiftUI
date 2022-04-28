@@ -46,69 +46,86 @@ struct ContentView: View {
     @State private var currentQuestion = 0
     private let numberOfQuestionsOption = [5, 10, 20]
     @State private var tablesToPractice = 2
-    @State private var numberOfQuestionsSelected = 5
+    @State private var numberOfQuestionsIndex = 0
     @State private var gameStarted = false
     private let numberRange = 0...12
     @State private var currentAnswer = ""
-
     @State private var answer = ""
 
+    private var numberOfQuestionsSelected: Int {
+        numberOfQuestionsOption[numberOfQuestionsIndex]
+    }
+
+    @State private var score = 0
+
     var body: some View {
-        if !gameStarted {
-            VStack {
-                Stepper("Which tables do you wish to practice?",
-                        value: $tablesToPractice,
-                        in: 2...12)
-                Text("\(tablesToPractice) times table")
-                HStack {
-                    Text("How many questions would you like?")
-                    Picker("How many questions would you like?", selection: $numberOfQuestionsSelected) {
-                        ForEach(numberOfQuestionsOption, id: \.self) { numberOfQuestions in
-                            Text("\(numberOfQuestions)")
+        ZStack {
+            RadialGradient(
+                gradient: .init(colors: [.pink, .purple]),
+                center: .top,
+                startRadius: 200,
+                endRadius: 700
+            )
+            .ignoresSafeArea()
+            if !gameStarted {
+                VStack {
+                    Stepper("\(tablesToPractice) times table",
+                            value: $tablesToPractice,
+                            in: 2...12)
+                    Stepper("\(numberOfQuestionsSelected) questions",
+                            value: $numberOfQuestionsIndex,
+                            in: 0...2)
+
+                    Button("Start Game") {
+                        gameStarted = true
+                        for _ in 0..<numberOfQuestionsSelected {
+                            questions.append(Question(lhs: tablesToPractice, rhs: numberRange.randomElement() ?? 0))
                         }
                     }
                 }
-                Button("Start Game") {
-                    gameStarted = true
-                    for _ in 0..<numberOfQuestionsSelected {
-                        questions.append(Question(lhs: tablesToPractice, rhs: numberRange.randomElement() ?? 0))
+                .padding()
+            } else {
+                VStack {
+                    Text("Question \(currentQuestion + 1)")
+                    Text("\(questions[currentQuestion].lhs) x \(questions[currentQuestion].rhs) = ?")
+                    
+                    if answer == "" {
+                        TextField("Answer", text: $currentAnswer)
+                            .keyboardType(.numberPad)
+
+                        Button("Check") {
+                            if currentAnswer == "\(questions[currentQuestion].answer)" {
+                                answer = "Correct"
+                                score += 1
+                            } else {
+                                answer = "Incorrect"
+                            }
+                        }
                     }
-                }
-            }
-            .padding()
-        } else {
-            VStack {
-                Text("Question \(currentQuestion + 1)")
-                Text("\(questions[currentQuestion].lhs) x \(questions[currentQuestion].rhs) = ?")
-                TextField("Answer", text: $currentAnswer)
-                if answer == "" {
-                    Button("Check") {
-                        if currentAnswer == "\(questions[currentQuestion].answer)" {
-                            answer = "Correct"
+                    else  {
+                        if currentQuestion == numberOfQuestionsSelected - 1 {
+                            Text("\(answer)")
+                            Text("Game over")
+                            Text("You scored \(score)/\(numberOfQuestionsSelected)")
+                            Text("Tap screen to start again")
                         } else {
-                            answer = "Incorrect"
+                            Text("\(answer) - tap to continue")
                         }
                     }
                 }
-                else  {
-                    if currentQuestion == numberOfQuestionsSelected - 1 {
-                        Text("\(answer) - tap to start again")
-                    } else {
-                        Text("\(answer) - tap to continue")
-                    }
-                }
-            }
-            .padding()
-            .onTapGesture {
-                if answer != "" {
-                    answer = ""
-                    currentAnswer = ""
-                    if currentQuestion < numberOfQuestionsSelected - 1 {
-                        currentQuestion += 1
-                    } else if currentQuestion == numberOfQuestionsSelected - 1 {
-                        questions.removeAll()
-                        currentQuestion = 0
-                        gameStarted = false
+                .padding()
+                .onTapGesture {
+                    if answer != "" {
+                        answer = ""
+                        currentAnswer = ""
+                        if currentQuestion < numberOfQuestionsSelected - 1 {
+                            currentQuestion += 1
+                        } else if currentQuestion == numberOfQuestionsSelected - 1 {
+                            questions.removeAll()
+                            currentQuestion = 0
+                            score = 0
+                            gameStarted = false
+                        }
                     }
                 }
             }
