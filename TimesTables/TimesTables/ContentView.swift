@@ -51,6 +51,7 @@ struct ContentView: View {
     private let numberRange = 0...12
     @State private var currentAnswer = ""
     @State private var answer = ""
+    @FocusState private var answerFocused: Bool
 
     private var numberOfQuestionsSelected: Int {
         numberOfQuestionsOption[numberOfQuestionsIndex]
@@ -77,10 +78,11 @@ struct ContentView: View {
                             in: 0...2)
 
                     Button("Start Game") {
-                        gameStarted = true
                         for _ in 0..<numberOfQuestionsSelected {
                             questions.append(Question(lhs: tablesToPractice, rhs: numberRange.randomElement() ?? 0))
                         }
+                        gameStarted = true
+                        answerFocused = true
                     }
                 }
                 .padding()
@@ -88,9 +90,11 @@ struct ContentView: View {
                 VStack {
                     Text("Question \(currentQuestion + 1)")
                     Text("\(questions[currentQuestion].lhs) x \(questions[currentQuestion].rhs) = ?")
-                    
+
                     if answer == "" {
                         TextField("Answer", text: $currentAnswer)
+                            .multilineTextAlignment(.center)
+                            .focused($answerFocused)
                             .keyboardType(.numberPad)
 
                         Button("Check") {
@@ -118,6 +122,7 @@ struct ContentView: View {
                     if answer != "" {
                         answer = ""
                         currentAnswer = ""
+                        answerFocused = true
                         if currentQuestion < numberOfQuestionsSelected - 1 {
                             currentQuestion += 1
                         } else if currentQuestion == numberOfQuestionsSelected - 1 {
