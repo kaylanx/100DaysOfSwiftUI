@@ -11,6 +11,15 @@
 		588DC50028231162004F6F1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC4FF28231162004F6F1A /* ContentView.swift */; };
 		588DC50228231168004F6F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588DC50128231168004F6F1A /* Assets.xcassets */; };
 		588DC50528231168004F6F1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588DC50428231168004F6F1A /* Preview Assets.xcassets */; };
+		588DC50C28232066004F6F1A /* SheetExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC50B28232066004F6F1A /* SheetExampleView.swift */; };
+		588DC50E282325D3004F6F1A /* DeleteFromListExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC50D282325D3004F6F1A /* DeleteFromListExampleView.swift */; };
+		588DC51028232B2F004F6F1A /* ObservedObjectExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC50F28232B2F004F6F1A /* ObservedObjectExampleView.swift */; };
+		588DC51328232D6E004F6F1A /* UserDefaultsExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC51228232D6E004F6F1A /* UserDefaultsExampleView.swift */; };
+		588DC515282330E0004F6F1A /* CodableExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC514282330E0004F6F1A /* CodableExampleView.swift */; };
+		588DC51728246EF9004F6F1A /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC51628246EF9004F6F1A /* ExpenseItem.swift */; };
+		588DC51928246FB5004F6F1A /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC51828246FB5004F6F1A /* Expenses.swift */; };
+		588DC51B28247702004F6F1A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC51A28247702004F6F1A /* AddView.swift */; };
+		588DC51D2826665F004F6F1A /* PreferredCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588DC51C2826665F004F6F1A /* PreferredCurrency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +28,15 @@
 		588DC4FF28231162004F6F1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		588DC50128231168004F6F1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		588DC50428231168004F6F1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		588DC50B28232066004F6F1A /* SheetExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetExampleView.swift; sourceTree = "<group>"; };
+		588DC50D282325D3004F6F1A /* DeleteFromListExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteFromListExampleView.swift; sourceTree = "<group>"; };
+		588DC50F28232B2F004F6F1A /* ObservedObjectExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedObjectExampleView.swift; sourceTree = "<group>"; };
+		588DC51228232D6E004F6F1A /* UserDefaultsExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExampleView.swift; sourceTree = "<group>"; };
+		588DC514282330E0004F6F1A /* CodableExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExampleView.swift; sourceTree = "<group>"; };
+		588DC51628246EF9004F6F1A /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
+		588DC51828246FB5004F6F1A /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
+		588DC51A28247702004F6F1A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		588DC51C2826665F004F6F1A /* PreferredCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredCurrency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +71,13 @@
 			children = (
 				588DC4FD28231162004F6F1A /* iExpenseApp.swift */,
 				588DC4FF28231162004F6F1A /* ContentView.swift */,
+				588DC51A28247702004F6F1A /* AddView.swift */,
 				588DC50128231168004F6F1A /* Assets.xcassets */,
 				588DC50328231168004F6F1A /* Preview Content */,
+				588DC51128232D54004F6F1A /* Lessons */,
+				588DC51628246EF9004F6F1A /* ExpenseItem.swift */,
+				588DC51828246FB5004F6F1A /* Expenses.swift */,
+				588DC51C2826665F004F6F1A /* PreferredCurrency.swift */,
 			);
 			path = iExpense;
 			sourceTree = "<group>";
@@ -65,6 +88,18 @@
 				588DC50428231168004F6F1A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		588DC51128232D54004F6F1A /* Lessons */ = {
+			isa = PBXGroup;
+			children = (
+				588DC50B28232066004F6F1A /* SheetExampleView.swift */,
+				588DC50D282325D3004F6F1A /* DeleteFromListExampleView.swift */,
+				588DC50F28232B2F004F6F1A /* ObservedObjectExampleView.swift */,
+				588DC51228232D6E004F6F1A /* UserDefaultsExampleView.swift */,
+				588DC514282330E0004F6F1A /* CodableExampleView.swift */,
+			);
+			path = Lessons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +172,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588DC50E282325D3004F6F1A /* DeleteFromListExampleView.swift in Sources */,
+				588DC515282330E0004F6F1A /* CodableExampleView.swift in Sources */,
+				588DC51B28247702004F6F1A /* AddView.swift in Sources */,
+				588DC50C28232066004F6F1A /* SheetExampleView.swift in Sources */,
+				588DC51D2826665F004F6F1A /* PreferredCurrency.swift in Sources */,
+				588DC51728246EF9004F6F1A /* ExpenseItem.swift in Sources */,
+				588DC51028232B2F004F6F1A /* ObservedObjectExampleView.swift in Sources */,
 				588DC50028231162004F6F1A /* ContentView.swift in Sources */,
+				588DC51928246FB5004F6F1A /* Expenses.swift in Sources */,
+				588DC51328232D6E004F6F1A /* UserDefaultsExampleView.swift in Sources */,
 				588DC4FE28231162004F6F1A /* iExpenseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
