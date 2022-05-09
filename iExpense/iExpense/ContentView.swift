@@ -42,20 +42,38 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                                .font(.subheadline)
+                Section(header: Text("Personal")) {
+                    ForEach(expenses.personalItems) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Text(item.amount, format: .currency(code: PreferredCurrency.code))
+                                .amountStyle(for: item.amount)
                         }
-                        Spacer()
-                        Text(item.amount, format: .currency(code: PreferredCurrency.code))
-                            .amountStyle(for: item.amount)
                     }
+                    .onDelete(perform: removePersonalItem)
                 }
-                .onDelete(perform: removeItems)
+                Section(header: Text("Business")) {
+                        ForEach(expenses.businessItems) { item in
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.type)
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Text(item.amount, format: .currency(code: PreferredCurrency.code))
+                                .amountStyle(for: item.amount)
+                        }
+                    }
+                    .onDelete(perform: removeBusinessItem)
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -71,8 +89,12 @@ struct ContentView: View {
         }
     }
 
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
+    func removePersonalItem(at offsets: IndexSet) {
+        expenses.personalItems.remove(atOffsets: offsets)
+    }
+
+    func removeBusinessItem(at offsets: IndexSet) {
+        expenses.businessItems.remove(atOffsets: offsets)
     }
 }
 

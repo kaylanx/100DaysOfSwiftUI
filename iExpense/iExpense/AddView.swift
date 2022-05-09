@@ -31,15 +31,16 @@ struct AddView: View {
 
                 TextField("Amount", value: $amount, format: .currency(code: PreferredCurrency.code))
                     .keyboardType(.decimalPad)
-                Text(name)
-                Text(type)
-                Text("\(amount)")
             }
             .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
                     let item = ExpenseItem(name: name, type: type, amount: amount)
-                    expenses.items.append(item)
+                    if item.type == "Personal" {
+                        expenses.personalItems.append(item)
+                    } else {
+                        expenses.businessItems.append(item)
+                    }
                     dismiss()
                 }
             }
