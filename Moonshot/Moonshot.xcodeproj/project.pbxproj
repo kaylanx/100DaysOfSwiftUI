@@ -11,6 +11,11 @@
 		58BCA8C2282C3FB20035048D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8C1282C3FB20035048D /* ContentView.swift */; };
 		58BCA8C4282C3FBD0035048D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58BCA8C3282C3FBD0035048D /* Assets.xcassets */; };
 		58BCA8C7282C3FBD0035048D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58BCA8C6282C3FBD0035048D /* Preview Assets.xcassets */; };
+		58BCA8CF282C46820035048D /* GeometryReaderExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8CE282C46820035048D /* GeometryReaderExampleView.swift */; };
+		58BCA8D1282C4ADF0035048D /* ScrollViewAndLazyStacksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8D0282C4ADF0035048D /* ScrollViewAndLazyStacksView.swift */; };
+		58BCA8D3282C50840035048D /* NavigationLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8D2282C50840035048D /* NavigationLinkView.swift */; };
+		58BCA8D5282C528B0035048D /* JSONView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8D4282C528B0035048D /* JSONView.swift */; };
+		58BCA8D7282C54AC0035048D /* GridViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCA8D6282C54AC0035048D /* GridViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		58BCA8C1282C3FB20035048D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		58BCA8C3282C3FBD0035048D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58BCA8C6282C3FBD0035048D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		58BCA8CE282C46820035048D /* GeometryReaderExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderExampleView.swift; sourceTree = "<group>"; };
+		58BCA8D0282C4ADF0035048D /* ScrollViewAndLazyStacksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewAndLazyStacksView.swift; sourceTree = "<group>"; };
+		58BCA8D2282C50840035048D /* NavigationLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkView.swift; sourceTree = "<group>"; };
+		58BCA8D4282C528B0035048D /* JSONView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONView.swift; sourceTree = "<group>"; };
+		58BCA8D6282C54AC0035048D /* GridViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +61,7 @@
 		58BCA8BE282C3FB20035048D /* Moonshot */ = {
 			isa = PBXGroup;
 			children = (
+				58BCA8CD282C465E0035048D /* Learning */,
 				58BCA8BF282C3FB20035048D /* MoonshotApp.swift */,
 				58BCA8C1282C3FB20035048D /* ContentView.swift */,
 				58BCA8C3282C3FBD0035048D /* Assets.xcassets */,
@@ -65,6 +76,18 @@
 				58BCA8C6282C3FBD0035048D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		58BCA8CD282C465E0035048D /* Learning */ = {
+			isa = PBXGroup;
+			children = (
+				58BCA8CE282C46820035048D /* GeometryReaderExampleView.swift */,
+				58BCA8D0282C4ADF0035048D /* ScrollViewAndLazyStacksView.swift */,
+				58BCA8D2282C50840035048D /* NavigationLinkView.swift */,
+				58BCA8D4282C528B0035048D /* JSONView.swift */,
+				58BCA8D6282C54AC0035048D /* GridViews.swift */,
+			);
+			path = Learning;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58BCA8D5282C528B0035048D /* JSONView.swift in Sources */,
+				58BCA8CF282C46820035048D /* GeometryReaderExampleView.swift in Sources */,
+				58BCA8D3282C50840035048D /* NavigationLinkView.swift in Sources */,
 				58BCA8C2282C3FB20035048D /* ContentView.swift in Sources */,
 				58BCA8C0282C3FB20035048D /* MoonshotApp.swift in Sources */,
+				58BCA8D7282C54AC0035048D /* GridViews.swift in Sources */,
+				58BCA8D1282C4ADF0035048D /* ScrollViewAndLazyStacksView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
