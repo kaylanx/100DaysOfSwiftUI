@@ -27,6 +27,7 @@
 		58D6C16A2832F3D6002FA3DE /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6C1692832F3D6002FA3DE /* Divider.swift */; };
 		58D6C16C2832F453002FA3DE /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6C16B2832F453002FA3DE /* CrewView.swift */; };
 		58D6C16E2832F4AC002FA3DE /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6C16D2832F4AC002FA3DE /* CrewMember.swift */; };
+		58D6C1702832F8A0002FA3DE /* MissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6C16F2832F8A0002FA3DE /* MissionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		58D6C1692832F3D6002FA3DE /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		58D6C16B2832F453002FA3DE /* CrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
 		58D6C16D2832F4AC002FA3DE /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
+		58D6C16F2832F8A0002FA3DE /* MissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		58BCA8B3282C3FB20035048D = {
 			isa = PBXGroup;
 			children = (
+				58D6C16F2832F8A0002FA3DE /* MissionsView.swift */,
 				58BCA8BE282C3FB20035048D /* Moonshot */,
 				58BCA8BD282C3FB20035048D /* Products */,
 			);
@@ -199,6 +202,7 @@
 				58BCA8CF282C46820035048D /* GeometryReaderExampleView.swift in Sources */,
 				58BCA8D3282C50840035048D /* NavigationLinkView.swift in Sources */,
 				58D6C16A2832F3D6002FA3DE /* Divider.swift in Sources */,
+				58D6C1702832F8A0002FA3DE /* MissionsView.swift in Sources */,
 				58D6C16E2832F4AC002FA3DE /* CrewMember.swift in Sources */,
 				58CD64A8282ED5C9002BB0FC /* Color+Theme.swift in Sources */,
 				58BCA8C2282C3FB20035048D /* ContentView.swift in Sources */,
