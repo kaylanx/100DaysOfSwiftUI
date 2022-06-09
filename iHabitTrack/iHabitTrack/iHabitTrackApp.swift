@@ -12,6 +12,8 @@ struct iHabitTrackApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(.purple)
+                .accentColor(.purple)
         }
     }
 }
