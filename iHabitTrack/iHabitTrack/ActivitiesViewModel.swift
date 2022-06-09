@@ -8,17 +8,39 @@
 import Foundation
 
 class ActivitiesViewModel: ObservableObject {
-    @Published var activities = [Activity]()
+
+    @Published var activities = [Activity]() {
+        didSet {
+            if let encoded = try? JSONEncoder().encode(activities) {
+                UserDefaults.standard.set(encoded, forKey: "activities")
+            }
+        }
+    }
 
     init() {
-        add(activity: Activity(name: "Dancing", numberOfTimesCompleted: 0))
-        add(activity: Activity(name: "Walking", numberOfTimesCompleted: 7))
-        add(activity: Activity(name: "Going to the gym", numberOfTimesCompleted: 5))
-        add(activity: Activity(name: "Drinking water", numberOfTimesCompleted: 6))
-        add(activity: Activity(name: "Catching Pokémon", numberOfTimesCompleted: 929))
+        if let savedActivities = UserDefaults.standard.data(forKey: "activities") {
+            if let decodedItems = try? JSONDecoder().decode([Activity].self, from: savedActivities) {
+                activities = decodedItems
+                return
+            } else {
+                activities = []
+            }
+        } else {
+            activities = []
+        }
     }
 
     func add(activity: Activity) {
         activities.append(activity)
+    }
+
+    func complete(activity: Activity) -> Activity {
+        if let index = activities.firstIndex(of: activity) {
+            var activityToUpdate = activities[index]
+            activityToUpdate.numberOfTimesCompleted += 1
+            activities[index] = activityToUpdate
+            return activityToUpdate
+        }
+        return activity
     }
 }

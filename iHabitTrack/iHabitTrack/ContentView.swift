@@ -59,7 +59,6 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: "plus")
                 }
-
             }
             .sheet(isPresented: $showingAddActivity) {
                 AddActivityView(viewModel: viewModel)

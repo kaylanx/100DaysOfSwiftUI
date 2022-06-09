@@ -21,10 +21,7 @@ struct ActivityDetailsView: View {
             }
             .padding(.bottom)
             Button("Complete activity") {
-                if let activityToUpdate = viewModel.activities.firstIndex(of: selectedActivity) {
-                    selectedActivity.numberOfTimesCompleted += 1
-                    viewModel.activities[activityToUpdate] = selectedActivity
-                }
+                selectedActivity = viewModel.complete(activity: selectedActivity)
             }
             Spacer()
         }
