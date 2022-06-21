@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  CoreDataExampleView.swift
 //  Bookworm
 //
 //  Created by Andy Kayley on 21/06/2022.
@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
-
+struct CoreDataExampleView: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>
 
@@ -35,8 +34,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CoreDataExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        CoreDataExampleView()
     }
 }
