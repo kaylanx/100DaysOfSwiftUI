@@ -10,7 +10,13 @@ import SwiftUI
 struct ContentView: View {
 
     @Environment(\.managedObjectContext) private var context
-    @FetchRequest(sortDescriptors: []) private var books: FetchedResults<Book>
+    @FetchRequest(
+        sortDescriptors: [
+            SortDescriptor(\.title),  // order: .reverse) // Can also pass in the order.
+            SortDescriptor(\.author)
+        ]
+    )
+    private var books: FetchedResults<Book>
     @State private var isShowingAddScreen = false
 
     var body: some View {
@@ -18,7 +24,7 @@ struct ContentView: View {
             List {
                 ForEach(books) { book in
                     NavigationLink {
-                        Text(book.title ?? "Unknown")
+                        DetailView(book: book)
                     } label: {
                         HStack {
                             EmojiRatingView(rating: book.rating)
@@ -31,9 +37,15 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: deleteBooks)
             }
             .navigationTitle("Bookworm")
             .toolbar {
+
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isShowingAddScreen.toggle()
@@ -46,6 +58,15 @@ struct ContentView: View {
                 AddBookView()
             }
         }
+    }
+
+    func deleteBooks(at offsets: IndexSet) {
+        for offset in offsets {
+            let book = books[offset]
+            context.delete(book)
+        }
+
+        try? context.save()
     }
 }
 
