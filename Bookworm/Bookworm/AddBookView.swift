@@ -55,7 +55,7 @@ struct AddBookView: View {
                         newBook.rating = Int16(rating)
                         newBook.genre = genre
                         newBook.review = review.isEmpty ? "Not reviewed" : review
-
+                        newBook.date = Date.now
                         try? context.save()
                         dismiss()
                     }
