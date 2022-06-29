@@ -18,6 +18,12 @@ struct AddBookView: View {
     @State private var genre = ""
     @State private var review = ""
 
+    private var isFormValid: Bool {
+        title.isEmpty == false &&
+        author.isEmpty == false &&
+        genre.isEmpty == false
+    }
+
     private let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
 
     var body: some View {
@@ -48,12 +54,13 @@ struct AddBookView: View {
                         newBook.author = author
                         newBook.rating = Int16(rating)
                         newBook.genre = genre
-                        newBook.review = review
+                        newBook.review = review.isEmpty ? "Not reviewed" : review
 
                         try? context.save()
                         dismiss()
                     }
                 }
+                .disabled(isFormValid == false)
             }
             .navigationTitle("Add Book")
         }
