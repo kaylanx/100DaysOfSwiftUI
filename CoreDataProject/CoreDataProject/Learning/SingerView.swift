@@ -11,10 +11,11 @@ struct SingerView: View {
 
     @Environment(\.managedObjectContext) var context
     @State private var lastNameFilter = "A"
+    @State private var predicate: String = "BEGINSWITH"
 
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(filterKey: "lastName", filterPredicate: predicate, filterValue: lastNameFilter) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
 
@@ -34,12 +35,24 @@ struct SingerView: View {
                 try? context.save()
             }
 
-            Button("Show A") {
+            Button("Show BEGINSWITH A") {
                 lastNameFilter = "A"
+                predicate = "BEGINSWITH"
             }
 
-            Button("Show S") {
+            Button("Show BEGINSWITH S") {
                 lastNameFilter = "S"
+                predicate = "BEGINSWITH"
+            }
+
+            Button("Show CONTAINS A") {
+                lastNameFilter = "A"
+                predicate = "CONTAINS[c]"
+            }
+
+            Button("Show CONTAINS S") {
+                lastNameFilter = "S"
+                predicate = "CONTAINS[c]"
             }
         }
     }

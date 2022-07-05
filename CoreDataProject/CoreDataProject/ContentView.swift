@@ -10,8 +10,8 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        CandyCountryView()
- //       SingerView()
+//        CandyCountryView()
+        SingerView()
 //        ShipView()
 //        WizardsView()
     }

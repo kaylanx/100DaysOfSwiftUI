@@ -14,12 +14,13 @@ struct FilteredList<Entity: NSManagedObject, Content: View>: View {
 
     init(
         filterKey: String,
+        filterPredicate: String = "BEGINSWITH",
         filterValue: String,
         listItem: @escaping (Entity) -> Content
     ) {
         _fetchRequest = FetchRequest<Entity>(
             sortDescriptors: [],
-            predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue)
+            predicate: NSPredicate(format: "%K \(filterPredicate) %@", filterKey, filterValue)
         )
         self.listItem = listItem
     }
