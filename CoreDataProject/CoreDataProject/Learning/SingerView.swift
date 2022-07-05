@@ -11,7 +11,7 @@ struct SingerView: View {
 
     @Environment(\.managedObjectContext) var context
     @State private var lastNameFilter = "A"
-    @State private var predicate: String = "BEGINSWITH"
+    @State private var predicate = FilteredListPredicate.beginsWith
 
     var body: some View {
         VStack {
@@ -37,22 +37,22 @@ struct SingerView: View {
 
             Button("Show BEGINSWITH A") {
                 lastNameFilter = "A"
-                predicate = "BEGINSWITH"
+                predicate = .beginsWith
             }
 
             Button("Show BEGINSWITH S") {
                 lastNameFilter = "S"
-                predicate = "BEGINSWITH"
+                predicate = .beginsWith
             }
 
             Button("Show CONTAINS A") {
                 lastNameFilter = "A"
-                predicate = "CONTAINS[c]"
+                predicate = .containsIgnoreCase
             }
 
             Button("Show CONTAINS S") {
                 lastNameFilter = "S"
-                predicate = "CONTAINS[c]"
+                predicate = .containsIgnoreCase
             }
         }
     }
