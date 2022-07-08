@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @StateObject private var viewModel = UserViewModel()
+    @StateObject var viewModel: UserViewModel
 
     var body: some View {
         VStack {
@@ -21,7 +21,18 @@ struct ContentView: View {
                     HStack {
                         Text(user.name)
                         Spacer()
-                        Text(user.isActive ? "Active" : "Inactive")
+                        Circle()
+                            .strokeBorder(
+                                user.isActive ? .green : .gray,
+                                lineWidth: 1.5
+                            )
+                            .background(
+                                Circle()
+                                    .fill(
+                                        user.isActive ? Color.green : Color.white
+                                    )
+                            )
+                            .frame(width: 15)
                     }
                 }
             }
@@ -33,7 +44,10 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+
+    private static var viewModel = UserViewModel(userRepository: PreviewUserRepository())
+
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: viewModel)
     }
 }
