@@ -16,6 +16,8 @@
 		585080F328761C7700A7429F /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585080F228761C7700A7429F /* Friend.swift */; };
 		585080F62876240000A7429F /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585080F52876240000A7429F /* UserViewModel.swift */; };
 		585080F92878530D00A7429F /* PreviewUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585080F82878530D00A7429F /* PreviewUserRepository.swift */; };
+		585080FC28785A1F00A7429F /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585080FB28785A1F00A7429F /* UserListView.swift */; };
+		585080FE28785A2D00A7429F /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585080FD28785A2D00A7429F /* UserDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		585080F228761C7700A7429F /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		585080F52876240000A7429F /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		585080F82878530D00A7429F /* PreviewUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewUserRepository.swift; sourceTree = "<group>"; };
+		585080FB28785A1F00A7429F /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		585080FD28785A2D00A7429F /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 		585080DD287617BB00A7429F /* FriendFace */ = {
 			isa = PBXGroup;
 			children = (
+				585080FA28785A0B00A7429F /* Views */,
 				585080F7287852F200A7429F /* PreviewHelpers */,
 				585080F4287623EA00A7429F /* ViewModel */,
 				585080ED28761BE700A7429F /* Repository */,
@@ -112,6 +117,15 @@
 				585080F82878530D00A7429F /* PreviewUserRepository.swift */,
 			);
 			path = PreviewHelpers;
+			sourceTree = "<group>";
+		};
+		585080FA28785A0B00A7429F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				585080FB28785A1F00A7429F /* UserListView.swift */,
+				585080FD28785A2D00A7429F /* UserDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +201,8 @@
 				585080F128761C6800A7429F /* User.swift in Sources */,
 				585080F62876240000A7429F /* UserViewModel.swift in Sources */,
 				585080E1287617BB00A7429F /* ContentView.swift in Sources */,
+				585080FC28785A1F00A7429F /* UserListView.swift in Sources */,
+				585080FE28785A2D00A7429F /* UserDetailView.swift in Sources */,
 				585080F92878530D00A7429F /* PreviewUserRepository.swift in Sources */,
 				585080F328761C7700A7429F /* Friend.swift in Sources */,
 				585080DF287617BB00A7429F /* FriendFaceApp.swift in Sources */,

@@ -9,36 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @StateObject var viewModel: UserViewModel
+    var viewModel: UserViewModel
 
     var body: some View {
-        VStack {
-            if viewModel.hasUsers == false {
-                ProgressView()
-            }
-            else {
-                List(viewModel.users) { user in
-                    HStack {
-                        Text(user.name)
-                        Spacer()
-                        Circle()
-                            .strokeBorder(
-                                user.isActive ? .green : .gray,
-                                lineWidth: 1.5
-                            )
-                            .background(
-                                Circle()
-                                    .fill(
-                                        user.isActive ? Color.green : Color.white
-                                    )
-                            )
-                            .frame(width: 15)
-                    }
-                }
-            }
-        }
-        .task {
-            await viewModel.getUsers()
+        NavigationView {
+            UserListView(viewModel: viewModel)
         }
     }
 }
