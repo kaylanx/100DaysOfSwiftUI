@@ -38,6 +38,8 @@ struct UserDetailView: View {
 
 struct UserDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        UserDetailView(user: PreviewUserRepository.users.first!)
+        NavigationView {
+            UserDetailView(user: PreviewUserRepository.users.first!)
+        }
     }
 }
