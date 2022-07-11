@@ -22,16 +22,54 @@ struct UserDetailView: View {
      let friends: [Friend]
      */
     var body: some View {
-        ScrollView {
-            VStack {
-                Text("Age: \(user.age)")
+        List {
+            Section(header: VStack(alignment: .center) {
+                Text(user.name)
+                    .font(.largeTitle)
                 Text(user.company)
-                Text(user.email)
-                Text(user.address)
-                Text("About")
-                Text(user.about)
+                    .font(.body)
+                    .foregroundColor(.gray)
             }
-            .navigationTitle(user.name)
+            ) {
+                EmptyView()
+            }
+            .headerProminence(.increased)
+
+
+            Section(header: Text("General Info")) {
+                cell(with: "Member since", for: "\(user.formattedRegistered)")
+            }
+            Section {
+                cell(with: "Age", for: "\(user.age)")
+            }
+            Section {
+                cell(with: "Email", for: user.email)
+                cell(with: "Address", for: user.address)
+            }
+            Section {
+                cell(with: "About", for: user.about)
+            }
+            Section(header: Text("Tags")) {
+                ForEach(user.tags, id: \.self) { tag in
+                    Text(tag)
+                }
+            }
+            Section(header: Text("Friends")) {
+                ForEach(user.friends) { friend in
+                    Text(friend.name)
+                }
+            }
+        }
+        .listStyle(.grouped)
+        .navigationBarTitleDisplayMode(.inline)
+
+    }
+
+    func cell(with title: String, for content: String) -> some View {
+        VStack(alignment: .leading) {
+            Text(title)
+                .font(.caption2)
+            Text(content)
         }
     }
 }
