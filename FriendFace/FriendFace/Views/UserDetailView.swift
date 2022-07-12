@@ -17,11 +17,11 @@ struct UserDetailView: View {
             ScrollView {
                 LazyVStack {
 
-                            Text(user.name)
-                                .font(.largeTitle)
-                            Text(user.company)
-                                .font(.body)
-                                .foregroundColor(.secondaryLabel)
+                    Text(user.name)
+                        .font(.largeTitle)
+                    Text(user.company)
+                        .font(.body)
+                        .foregroundColor(.secondaryLabel)
 
 
                     SectionView {
@@ -39,6 +39,11 @@ struct UserDetailView: View {
                         cell(with: "About", for: user.about)
                     }
                     SectionView {
+                        Text("Tags")
+                            .font(.caption2)
+                            .foregroundColor(.secondaryLabel)
+                            .padding(.horizontal)
+                            .padding(.top, 10)
                         ForEach(user.tags, id: \.self) { tag in
                             Text(tag)
                                 .padding(.horizontal)
@@ -50,11 +55,20 @@ struct UserDetailView: View {
                         }
                     }
                     SectionView {
+                        Text("Friends")
+                            .font(.caption2)
+                            .foregroundColor(.secondaryLabel)
+                            .padding(.horizontal)
+                            .padding(.top, 10)
                         ForEach(user.friends) { friend in
                             Text(friend.name)
-                            divider
+                                .padding(.horizontal)
+                                .padding(.top, user.friends.first == friend ? 10 : 0)
+                                .padding(.bottom, user.friends.last == friend ? 10 : 0)
+                            if user.friends.last != friend {
+                                divider
+                            }
                         }
-                        .padding()
                     }
                 }
             }
@@ -80,21 +94,6 @@ struct UserDetailView: View {
         .padding(.vertical, 10)
     }
 
-}
-
-struct SectionView<Content: View>: View {
-    @ViewBuilder var content: Content
-
-    var body: some View {
-        ZStack {
-            Color.secondarySystemGroupedBackground
-            VStack(alignment: .leading) {
-                content
-            }
-        }
-        .cornerRadius(4)
-        .padding(5)
-    }
 }
 
 struct UserDetailView_Previews: PreviewProvider {
