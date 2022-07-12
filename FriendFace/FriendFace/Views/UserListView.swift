@@ -37,13 +37,13 @@ struct UserListView: View {
             Spacer()
             Circle()
                 .strokeBorder(
-                    user.isActive ? .green : .gray,
+                    user.isActive ? .green : .secondaryLabel,
                     lineWidth: 1.5
                 )
                 .background(
                     Circle()
                         .fill(
-                            user.isActive ? Color.green : Color.white
+                            user.isActive ? Color.green : Color.secondarySystemGroupedBackground
                         )
                 )
                 .frame(width: 15)
@@ -57,5 +57,9 @@ struct UserListView_Previews: PreviewProvider {
 
     static var previews: some View {
         UserListView(viewModel: viewModel)
+
+        UserListView(viewModel: viewModel)
+            .preferredColorScheme(.dark)
+
     }
 }
