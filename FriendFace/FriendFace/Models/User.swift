@@ -26,5 +26,13 @@ struct User: Codable, Identifiable {
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: registered)
     }
+
+    var initials: String {
+        name.components(separatedBy: " ")
+            .reduce("") {
+                ($0.isEmpty ? "" : "\($0.first?.uppercased() ?? "")") +
+                ($1.isEmpty ? "" : "\($1.first?.uppercased() ?? "")")
+            }
+    }
 }
 

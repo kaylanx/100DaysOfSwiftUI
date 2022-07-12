@@ -17,6 +17,8 @@ struct UserDetailView: View {
             ScrollView {
                 LazyVStack {
 
+                    initialsCircle
+
                     Text(user.name)
                         .font(.largeTitle)
                     Text(user.company)
@@ -68,6 +70,28 @@ struct UserDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.systemGroupedBackground)
+    }
+
+    var initialsCircle: some View {
+        ZStack {
+            Circle()
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(
+                            colors: [.systemGray3, .systemGray]
+                        ),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(width: 75, height: 75)
+
+            Text(user.initials)
+                .font(.largeTitle)
+                .foregroundColor(
+                    .systemGroupedBackground
+                )
+        }
     }
 }
 
