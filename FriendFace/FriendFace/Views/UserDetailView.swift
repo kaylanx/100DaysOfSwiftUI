@@ -25,48 +25,49 @@ struct UserDetailView: View {
 
 
                     SectionView {
-                        cell(with: "Member since", for: "\(user.formattedRegistered)")
+                        SectionCell(title: "Member since") {
+                            Text("\(user.formattedRegistered)")
+                        }
                     }
                     SectionView {
-                        cell(with: "Age", for: "\(user.age)")
+                        SectionCell(title: "Age") {
+                            Text("\(user.age)")
+                        }
                     }
                     SectionView {
-                        cell(with: "Email", for: user.email)
+                        SectionCell(title: "Email") {
+                            Text(user.email)
+                        }
                         divider
-                        cell(with: "Address", for: user.address)
+                            .padding(.leading)
+                        SectionCell(title: "Address") {
+                            Text(user.address)
+                        }
                     }
                     SectionView {
-                        cell(with: "About", for: user.about)
+                        SectionCell(title: "About") {
+                            Text(user.about)
+                        }
                     }
                     SectionView {
-                        Text("Tags")
-                            .font(.caption2)
-                            .foregroundColor(.secondaryLabel)
-                            .padding(.horizontal)
-                            .padding(.top, 10)
-                        ForEach(user.tags, id: \.self) { tag in
-                            Text(tag)
-                                .padding(.horizontal)
-                                .padding(.top, user.tags.first == tag ? 10 : 0)
-                                .padding(.bottom, user.tags.last == tag ? 10 : 0)
-                            if user.tags.last != tag {
-                                divider
+                        SectionCell(title:"Tags") {
+                            ForEach(user.tags, id: \.self) { tag in
+                                Text(tag)
+                                    .padding(.bottom, user.tags.last == tag ? 10 : 0)
+                                if user.tags.last != tag {
+                                    divider
+                                }
                             }
                         }
                     }
                     SectionView {
-                        Text("Friends")
-                            .font(.caption2)
-                            .foregroundColor(.secondaryLabel)
-                            .padding(.horizontal)
-                            .padding(.top, 10)
-                        ForEach(user.friends) { friend in
-                            Text(friend.name)
-                                .padding(.horizontal)
-                                .padding(.top, user.friends.first == friend ? 10 : 0)
-                                .padding(.bottom, user.friends.last == friend ? 10 : 0)
-                            if user.friends.last != friend {
-                                divider
+                        SectionCell(title: "Friends") {
+                            ForEach(user.friends) { friend in
+                                Text(friend.name)
+                                    .padding(.bottom, user.friends.last == friend ? 10 : 0)
+                                if user.friends.last != friend {
+                                    divider
+                                }
                             }
                         }
                     }
@@ -80,20 +81,7 @@ struct UserDetailView: View {
     @ViewBuilder private var divider: some View {
         Divider()
             .foregroundColor(.secondaryLabel)
-            .padding(.leading)
     }
-
-    func cell(with title: String, for content: String) -> some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .font(.caption2)
-                .foregroundColor(.secondaryLabel)
-            Text(content)
-        }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
-    }
-
 }
 
 struct UserDetailView_Previews: PreviewProvider {
