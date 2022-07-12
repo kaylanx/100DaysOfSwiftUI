@@ -72,26 +72,48 @@ struct UserDetailView: View {
         .background(Color.systemGroupedBackground)
     }
 
+
+    func useProxy(_ geometry: GeometryProxy) -> some View {
+        DispatchQueue.main.async {
+            self.circleDiameter = geometry.frame(in: .global).minY > 0.0 ? geometry.frame(in: .global).minY : 0
+        }
+
+        return EmptyView()
+    }
+
+    @State private var circleDiameter: CGFloat = 75
+
+    @ViewBuilder
     var initialsCircle: some View {
         ZStack {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        gradient: Gradient(
-                            colors: [.systemGray3, .systemGray]
-                        ),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(width: 75, height: 75)
+            GeometryReader { geo in
 
+                self.useProxy(geo)
+
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            gradient: Gradient(
+                                colors: [.systemGray3, .systemGray]
+                            ),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(
+                        width: circleDiameter,
+                        height: circleDiameter
+                    )
+
+            }
+            .background(Color.red)
             Text(user.initials)
                 .font(.largeTitle)
                 .foregroundColor(
                     .systemGroupedBackground
                 )
         }
+        .frame(width: 75, height: 75)
     }
 }
 
