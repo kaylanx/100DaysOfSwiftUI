@@ -38,7 +38,7 @@ struct UserDetailView: View {
                         SectionCell(title: "Email") {
                             Text(user.email)
                         }
-                        divider
+                        Divider()
                             .padding(.leading)
                         SectionCell(title: "Address") {
                             Text(user.address)
@@ -51,24 +51,16 @@ struct UserDetailView: View {
                     }
                     SectionView {
                         SectionCell(title:"Tags") {
-                            ForEach(user.tags, id: \.self) { tag in
-                                Text(tag)
-                                    .padding(.bottom, user.tags.last == tag ? 10 : 0)
-                                if user.tags.last != tag {
-                                    divider
-                                }
-                            }
+                            ConditionalDividerList(
+                                items: user.tags
+                            )
                         }
                     }
                     SectionView {
                         SectionCell(title: "Friends") {
-                            ForEach(user.friends) { friend in
-                                Text(friend.name)
-                                    .padding(.bottom, user.friends.last == friend ? 10 : 0)
-                                if user.friends.last != friend {
-                                    divider
-                                }
-                            }
+                            ConditionalDividerList(
+                                items: user.friends.map { $0.name }
+                            )
                         }
                     }
                 }
@@ -76,11 +68,6 @@ struct UserDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.systemGroupedBackground)
-    }
-
-    @ViewBuilder private var divider: some View {
-        Divider()
-            .foregroundColor(.secondaryLabel)
     }
 }
 
