@@ -24,6 +24,7 @@
 		585CF32D287E0FCD006A0DDF /* SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CF32C287E0FCD006A0DDF /* SectionView.swift */; };
 		585CF32F287E1504006A0DDF /* SectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CF32E287E1504006A0DDF /* SectionCell.swift */; };
 		585CF331287E1A14006A0DDF /* ConditionalDividerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CF330287E1A14006A0DDF /* ConditionalDividerList.swift */; };
+		585CF335287F32D8006A0DDF /* ScrollViewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585CF334287F32D8006A0DDF /* ScrollViewOffset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		585CF32C287E0FCD006A0DDF /* SectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionView.swift; sourceTree = "<group>"; };
 		585CF32E287E1504006A0DDF /* SectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionCell.swift; sourceTree = "<group>"; };
 		585CF330287E1A14006A0DDF /* ConditionalDividerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalDividerList.swift; sourceTree = "<group>"; };
+		585CF334287F32D8006A0DDF /* ScrollViewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewOffset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				585CF32C287E0FCD006A0DDF /* SectionView.swift */,
 				585CF32E287E1504006A0DDF /* SectionCell.swift */,
 				585CF330287E1A14006A0DDF /* ConditionalDividerList.swift */,
+				585CF334287F32D8006A0DDF /* ScrollViewOffset.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -236,6 +239,7 @@
 				585080F92878530D00A7429F /* PreviewUserRepository.swift in Sources */,
 				585080F328761C7700A7429F /* Friend.swift in Sources */,
 				585CF32F287E1504006A0DDF /* SectionCell.swift in Sources */,
+				585CF335287F32D8006A0DDF /* ScrollViewOffset.swift in Sources */,
 				585080DF287617BB00A7429F /* FriendFaceApp.swift in Sources */,
 				585CF331287E1A14006A0DDF /* ConditionalDividerList.swift in Sources */,
 				585080EF28761C1900A7429F /* UserRepository.swift in Sources */,

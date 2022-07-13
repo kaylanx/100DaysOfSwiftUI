@@ -9,14 +9,21 @@ import SwiftUI
 
 struct UserDetailView: View {
 
+    private struct Constants {
+        static let defaultCircleDiameter: CGFloat = 75
+    }
+
     var user: User
+    @State private var circleDiameter: CGFloat = 75
 
     var body: some View {
         ZStack {
             Color.systemGroupedBackground
-            ScrollView {
+            ScrollViewOffset { offset in
+                let scale = 1.0 - (min(Constants.defaultCircleDiameter, -offset) / Constants.defaultCircleDiameter)
+                circleDiameter = Constants.defaultCircleDiameter * scale
+            } content: {
                 LazyVStack {
-
                     initialsCircle
 
                     Text(user.name)
@@ -72,41 +79,23 @@ struct UserDetailView: View {
         .background(Color.systemGroupedBackground)
     }
 
-
-    func useProxy(_ geometry: GeometryProxy) -> some View {
-        DispatchQueue.main.async {
-            self.circleDiameter = geometry.frame(in: .global).minY > 0.0 ? geometry.frame(in: .global).minY : 0
-        }
-
-        return EmptyView()
-    }
-
-    @State private var circleDiameter: CGFloat = 75
-
     @ViewBuilder
     var initialsCircle: some View {
         ZStack {
-            GeometryReader { geo in
-
-                self.useProxy(geo)
-
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            gradient: Gradient(
-                                colors: [.systemGray3, .systemGray]
-                            ),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+            Circle()
+                .fill(
+                    LinearGradient(
+                        gradient: Gradient(
+                            colors: [.systemGray3, .systemGray]
+                        ),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
-                    .frame(
-                        width: circleDiameter,
-                        height: circleDiameter
-                    )
-
-            }
-            .background(Color.red)
+                )
+                .frame(
+                    width: circleDiameter,
+                    height: circleDiameter
+                )
             Text(user.initials)
                 .font(.largeTitle)
                 .foregroundColor(
