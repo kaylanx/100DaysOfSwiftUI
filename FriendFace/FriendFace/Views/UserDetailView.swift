@@ -11,23 +11,40 @@ struct UserDetailView: View {
 
     private struct Constants {
         static let defaultCircleDiameter: CGFloat = 75
+        static let defaultFontSize: CGFloat = 35
+
     }
 
     var user: User
-    @State private var circleDiameter: CGFloat = 75
+    @State private var circleDiameter: CGFloat = Constants.defaultCircleDiameter
+    @State private var textSize: CGFloat = Constants.defaultFontSize
+    @State private var isShowingNativeTitle = false
 
     var body: some View {
         ZStack {
             Color.systemGroupedBackground
             ScrollViewOffset { offset in
-                let scale = 1.0 - (min(Constants.defaultCircleDiameter, -offset) / Constants.defaultCircleDiameter)
-                circleDiameter = Constants.defaultCircleDiameter * scale
-            } content: {
-                LazyVStack {
-                    initialsCircle
 
-                    Text(user.name)
-                        .font(.largeTitle)
+                withAnimation {
+                    isShowingNativeTitle = offset <= -73.0
+                }
+
+                let circleScale = 1.0 - (min(Constants.defaultCircleDiameter, -offset) / Constants.defaultCircleDiameter)
+                circleDiameter = Constants.defaultCircleDiameter * circleScale
+
+                let textScale = 1.0 - (min(Constants.defaultFontSize, -offset) / Constants.defaultFontSize)
+                textSize = Constants.defaultFontSize * textScale
+
+            } content: {
+                LazyVStack(alignment: .center) {
+                    initialsCircle
+                        .padding(.top)
+
+                    if isShowingNativeTitle == false {
+                        Text(user.name)
+                            .font(.largeTitle)
+                    }
+
                     Text(user.company)
                         .font(.body)
                         .foregroundColor(.secondaryLabel)
@@ -76,12 +93,13 @@ struct UserDetailView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle(Text(isShowingNativeTitle ? user.name : ""))
         .background(Color.systemGroupedBackground)
     }
 
     @ViewBuilder
     var initialsCircle: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             Circle()
                 .fill(
                     LinearGradient(
@@ -97,12 +115,11 @@ struct UserDetailView: View {
                     height: circleDiameter
                 )
             Text(user.initials)
-                .font(.largeTitle)
                 .foregroundColor(
                     .systemGroupedBackground
                 )
+                .font(.system(size: textSize))
         }
-        .frame(width: 75, height: 75)
     }
 }
 
