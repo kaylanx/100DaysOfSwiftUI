@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PreviewUserRepository: UserProviding {
+struct PreviewUserRepository: UserRepositoryStore {
 
     static var users = [
         User(
@@ -60,5 +60,9 @@ struct PreviewUserRepository: UserProviding {
 
     func getUsers() async -> [User] {
         PreviewUserRepository.users
+    }
+
+    func save(users: [User]) {
+        // Do nothing
     }
 }

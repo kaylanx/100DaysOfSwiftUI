@@ -20,7 +20,10 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 
-    private static var viewModel = UserViewModel(userRepository: PreviewUserRepository())
+    private static var viewModel = UserViewModel(
+        remoteUserRepository: PreviewUserRepository(),
+        localUserRepository: PreviewUserRepository()
+    )
 
     static var previews: some View {
         ContentView(viewModel: viewModel)
