@@ -12,9 +12,9 @@ protocol UserRepositoryStore: UserRepository {
     func save(users: [User])
 }
 
-class CoreDataUserRepository: UserRepositoryStore {
+final class CoreDataUserRepository: UserRepositoryStore {
 
-    let container = NSPersistentContainer(name: "FriendFace")
+    private let container = NSPersistentContainer(name: "FriendFace")
 
     init() {
         container.loadPersistentStores { description, error in

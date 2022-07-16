@@ -15,8 +15,8 @@ final class UserViewModel: ObservableObject {
         users.isEmpty == false
     }
 
-    let remoteUserRepository: UserRepository
-    let localUserRepository: UserRepositoryStore
+    private let remoteUserRepository: UserRepository
+    private let localUserRepository: UserRepositoryStore
 
     init(
         remoteUserRepository: UserRepository = RemoteUserRepository(),
