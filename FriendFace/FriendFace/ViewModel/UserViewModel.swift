@@ -34,6 +34,7 @@ final class UserViewModel: ObservableObject {
             // Error handling is out of scope for this project
             print("Error \(error)")
 
+            // Out of scope for project but what I would do is:
             // 1. Check for internet connection failed error
             // 2. if internet connection failed read data from core data
             do {
