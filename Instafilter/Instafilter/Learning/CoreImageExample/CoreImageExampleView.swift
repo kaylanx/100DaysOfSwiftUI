@@ -86,8 +86,6 @@ struct CoreImageExampleView: View {
 
     @State private var image: Image?
     @State private var effectType: EffectType = .pixellate
-    @State private var showingImagePicker = false
-
 
     var body: some View {
         VStack {
@@ -103,15 +101,8 @@ struct CoreImageExampleView: View {
             image?
                 .resizable()
                 .scaledToFit()
-
-            Button("Select Image") {
-                showingImagePicker = true
-            }
         }
         .onAppear(perform: loadImage)
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
-        }
     }
 
     func loadImage() {

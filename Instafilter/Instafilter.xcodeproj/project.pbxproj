@@ -60,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				589F0849288464A90048D955 /* Learning */,
+				589F0854288601650048D955 /* ImagePicker.swift */,
 				589F083B288464680048D955 /* InstafilterApp.swift */,
 				589F083D288464680048D955 /* ContentView.swift */,
 				589F083F288464700048D955 /* Assets.xcassets */,
@@ -79,7 +80,6 @@
 		589F0849288464A90048D955 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
-				589F08532886014E0048D955 /* UIKitCompatExample */,
 				589F08502885F2240048D955 /* CoreImageExample */,
 				589F084D288469520048D955 /* ConfirmationDialogExample */,
 				589F084A288464B70048D955 /* BluringViewExample */,
@@ -109,14 +109,6 @@
 				589F08512885F23D0048D955 /* CoreImageExampleView.swift */,
 			);
 			path = CoreImageExample;
-			sourceTree = "<group>";
-		};
-		589F08532886014E0048D955 /* UIKitCompatExample */ = {
-			isa = PBXGroup;
-			children = (
-				589F0854288601650048D955 /* ImagePicker.swift */,
-			);
-			path = UIKitCompatExample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
