@@ -32,7 +32,7 @@ struct UIKitImagePickerView: View {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
         let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: inputImage)
+        imageSaver.writeToPhotoAlbum(image: inputImage, successHandler: nil, errorHandler: nil)
     }
 }
 
