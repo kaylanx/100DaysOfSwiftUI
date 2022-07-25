@@ -17,7 +17,7 @@ struct User: Identifiable, Comparable {
     }
 }
 
-struct ComparableViewExample: View {
+struct ComparableExampleView: View {
 
     let users = [
         User(firstName: "Arnold", lastName: "Rimmer"),
@@ -34,6 +34,6 @@ struct ComparableViewExample: View {
 
 struct ComparableViewExample_Previews: PreviewProvider {
     static var previews: some View {
-        ComparableViewExample()
+        ComparableExampleView()
     }
 }
