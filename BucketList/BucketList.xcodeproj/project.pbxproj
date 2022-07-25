@@ -14,6 +14,7 @@
 		589F0876288F2F700048D955 /* ComparableExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0875288F2F700048D955 /* ComparableExampleView.swift */; };
 		589F0878288F32CB0048D955 /* DocumentsDirectoryExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0877288F32CB0048D955 /* DocumentsDirectoryExampleView.swift */; };
 		589F087A288F36190048D955 /* FileManager+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0879288F36190048D955 /* FileManager+Decodable.swift */; };
+		589F087C288F38700048D955 /* EnumStateExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F087B288F38700048D955 /* EnumStateExampleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		589F0875288F2F700048D955 /* ComparableExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableExampleView.swift; sourceTree = "<group>"; };
 		589F0877288F32CB0048D955 /* DocumentsDirectoryExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDirectoryExampleView.swift; sourceTree = "<group>"; };
 		589F0879288F36190048D955 /* FileManager+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Decodable.swift"; sourceTree = "<group>"; };
+		589F087B288F38700048D955 /* EnumStateExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumStateExampleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			children = (
 				589F0875288F2F700048D955 /* ComparableExampleView.swift */,
 				589F0877288F32CB0048D955 /* DocumentsDirectoryExampleView.swift */,
+				589F087B288F38700048D955 /* EnumStateExampleView.swift */,
 			);
 			path = Learning;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589F087C288F38700048D955 /* EnumStateExampleView.swift in Sources */,
 				589F0878288F32CB0048D955 /* DocumentsDirectoryExampleView.swift in Sources */,
 				589F0876288F2F700048D955 /* ComparableExampleView.swift in Sources */,
 				589F0869288F2E950048D955 /* ContentView.swift in Sources */,
