@@ -19,6 +19,7 @@
 		589F08802890865D0048D955 /* TouchFaceIdExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F087F2890865D0048D955 /* TouchFaceIdExampleView.swift */; };
 		589F08832891D8FF0048D955 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F08822891D8FE0048D955 /* Location.swift */; };
 		589F08862891E1160048D955 /* PreviewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F08852891E1160048D955 /* PreviewLocation.swift */; };
+		589F08882891E6AF0048D955 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F08872891E6AF0048D955 /* EditView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		589F0881289086960048D955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		589F08822891D8FE0048D955 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		589F08852891E1160048D955 /* PreviewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocation.swift; sourceTree = "<group>"; };
+		589F08872891E6AF0048D955 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				589F0879288F36190048D955 /* FileManager+Decodable.swift */,
 				589F08822891D8FE0048D955 /* Location.swift */,
 				589F0868288F2E950048D955 /* ContentView.swift */,
+				589F08872891E6AF0048D955 /* EditView.swift */,
 				589F086A288F2EA10048D955 /* Assets.xcassets */,
 				589F086C288F2EA10048D955 /* Preview Content */,
 			);
@@ -181,6 +184,7 @@
 			files = (
 				589F087E289080250048D955 /* MapKitExampleView.swift in Sources */,
 				589F087C288F38700048D955 /* EnumStateExampleView.swift in Sources */,
+				589F08882891E6AF0048D955 /* EditView.swift in Sources */,
 				589F0878288F32CB0048D955 /* DocumentsDirectoryExampleView.swift in Sources */,
 				589F0876288F2F700048D955 /* ComparableExampleView.swift in Sources */,
 				589F08832891D8FF0048D955 /* Location.swift in Sources */,
