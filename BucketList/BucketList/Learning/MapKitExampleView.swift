@@ -8,13 +8,13 @@
 import MapKit
 import SwiftUI
 
-struct Location: Identifiable {
-    let id = UUID()
-    let name: String
-    let coordinate: CLLocationCoordinate2D
-}
-
 struct MapKitExampleView: View {
+
+    struct Location: Identifiable {
+        let id = UUID()
+        let name: String
+        let coordinate: CLLocationCoordinate2D
+    }
 
     @State private var mapRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(
