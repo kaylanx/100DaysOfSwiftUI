@@ -13,7 +13,7 @@ enum LoadingState {
 
 struct LoadingView: View {
     var body: some View {
-        Text("Loading...")
+        Text("Loading…")
     }
 }
 
