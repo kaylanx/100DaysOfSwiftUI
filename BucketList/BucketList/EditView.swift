@@ -20,7 +20,7 @@ struct EditView: View {
     @State private var name: String
     @State private var description: String
 
-    @State private var loadingState = EditView.LoadingState.loading
+    @State private var loadingState = LoadingState.loading
     @State private var pages = [Page]()
 
     init(location: Location, onSave: @escaping (Location) -> Void) {
