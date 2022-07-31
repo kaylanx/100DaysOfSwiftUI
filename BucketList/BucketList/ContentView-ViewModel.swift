@@ -5,9 +5,10 @@
 //  Created by Andy Kayley on 30/07/2022.
 //
 
-import Foundation
-import MapKit
 import CoreData
+import Foundation
+import LocalAuthentication
+import MapKit
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
@@ -25,6 +26,7 @@ extension ContentView {
 
         @Published private(set) var locations: [Location]
         @Published var selectedPlace: Location?
+        @Published var isUnlocked = false
 
         private let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
 
@@ -67,6 +69,26 @@ extension ContentView {
                 try data.write(to: savePath, options: [.atomic, .completeFileProtection])
             } catch {
                 print("Unable to save data: \(error.localizedDescription)")
+            }
+        }
+
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "Please authenticate yourself to unlock your places"
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    if success {
+                        Task { @MainActor in
+                            self.isUnlocked = true
+                        }
+                    } else {
+                        // error
+                    }
+                }
+            } else {
+                // no biometrics
             }
         }
     }
