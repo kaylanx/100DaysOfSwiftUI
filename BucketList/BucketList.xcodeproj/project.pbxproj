@@ -21,6 +21,8 @@
 		589F08862891E1160048D955 /* PreviewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F08852891E1160048D955 /* PreviewLocation.swift */; };
 		589F08882891E6AF0048D955 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F08872891E6AF0048D955 /* EditView.swift */; };
 		589F088A289325DA0048D955 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0889289325DA0048D955 /* Result.swift */; };
+		589F088C28958AD40048D955 /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F088B28958AD40048D955 /* ContentView-ViewModel.swift */; };
+		58D5D59128969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D5D59028969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		589F08852891E1160048D955 /* PreviewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocation.swift; sourceTree = "<group>"; };
 		589F08872891E6AF0048D955 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		589F0889289325DA0048D955 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		589F088B28958AD40048D955 /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		58D5D59028969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +81,10 @@
 				589F08842891E0DF0048D955 /* PreviewHelpers */,
 				589F0866288F2E950048D955 /* BucketListApp.swift */,
 				589F0879288F36190048D955 /* FileManager+Decodable.swift */,
+				58D5D59028969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift */,
 				589F08822891D8FE0048D955 /* Location.swift */,
 				589F0889289325DA0048D955 /* Result.swift */,
+				589F088B28958AD40048D955 /* ContentView-ViewModel.swift */,
 				589F0868288F2E950048D955 /* ContentView.swift */,
 				589F08872891E6AF0048D955 /* EditView.swift */,
 				589F086A288F2EA10048D955 /* Assets.xcassets */,
@@ -187,7 +193,9 @@
 			files = (
 				589F087E289080250048D955 /* MapKitExampleView.swift in Sources */,
 				589F087C288F38700048D955 /* EnumStateExampleView.swift in Sources */,
+				58D5D59128969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift in Sources */,
 				589F08882891E6AF0048D955 /* EditView.swift in Sources */,
+				589F088C28958AD40048D955 /* ContentView-ViewModel.swift in Sources */,
 				589F0878288F32CB0048D955 /* DocumentsDirectoryExampleView.swift in Sources */,
 				589F0876288F2F700048D955 /* ComparableExampleView.swift in Sources */,
 				589F08832891D8FF0048D955 /* Location.swift in Sources */,
