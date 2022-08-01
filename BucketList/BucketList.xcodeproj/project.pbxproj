@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		585F118F289874E900993B21 /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585F118E289874E900993B21 /* EditView-ViewModel.swift */; };
 		589F0867288F2E950048D955 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0866288F2E950048D955 /* BucketListApp.swift */; };
 		589F0869288F2E950048D955 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F0868288F2E950048D955 /* ContentView.swift */; };
 		589F086B288F2EA10048D955 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589F086A288F2EA10048D955 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		585F118E289874E900993B21 /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 		589F0863288F2E950048D955 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		589F0866288F2E950048D955 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		589F0868288F2E950048D955 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				589F0889289325DA0048D955 /* Result.swift */,
 				589F088B28958AD40048D955 /* ContentView-ViewModel.swift */,
 				589F0868288F2E950048D955 /* ContentView.swift */,
+				585F118E289874E900993B21 /* EditView-ViewModel.swift */,
 				589F08872891E6AF0048D955 /* EditView.swift */,
 				589F086A288F2EA10048D955 /* Assets.xcassets */,
 				589F086C288F2EA10048D955 /* Preview Content */,
@@ -199,6 +202,7 @@
 				589F0878288F32CB0048D955 /* DocumentsDirectoryExampleView.swift in Sources */,
 				589F0876288F2F700048D955 /* ComparableExampleView.swift in Sources */,
 				589F08832891D8FF0048D955 /* Location.swift in Sources */,
+				585F118F289874E900993B21 /* EditView-ViewModel.swift in Sources */,
 				589F088A289325DA0048D955 /* Result.swift in Sources */,
 				589F08862891E1160048D955 /* PreviewLocation.swift in Sources */,
 				589F0869288F2E950048D955 /* ContentView.swift in Sources */,
