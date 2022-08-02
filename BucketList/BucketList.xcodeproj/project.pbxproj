@@ -80,7 +80,6 @@
 			children = (
 				589F0881289086960048D955 /* Info.plist */,
 				589F0874288F2F540048D955 /* Learning */,
-				589F08842891E0DF0048D955 /* PreviewHelpers */,
 				589F0866288F2E950048D955 /* BucketListApp.swift */,
 				589F0879288F36190048D955 /* FileManager+Decodable.swift */,
 				58D5D59028969EB5006EB5E2 /* FileManager+DocumentsDirectory.swift */,
@@ -99,6 +98,7 @@
 		589F086C288F2EA10048D955 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				589F08852891E1160048D955 /* PreviewLocation.swift */,
 				589F086D288F2EA10048D955 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -114,14 +114,6 @@
 				589F087F2890865D0048D955 /* TouchFaceIdExampleView.swift */,
 			);
 			path = Learning;
-			sourceTree = "<group>";
-		};
-		589F08842891E0DF0048D955 /* PreviewHelpers */ = {
-			isa = PBXGroup;
-			children = (
-				589F08852891E1160048D955 /* PreviewLocation.swift */,
-			);
-			path = PreviewHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
