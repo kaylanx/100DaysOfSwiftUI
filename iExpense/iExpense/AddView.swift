@@ -12,20 +12,17 @@ struct AddView: View {
     @ObservedObject var expenses: Expenses
     @Environment(\.dismiss) var dismiss
 
-
     @State private var name = ""
-    @State private var type = "Personal"
+    @State private var type = ExpenseType.personal
     @State private var amount = 0.0
-
-    let types = ["Business", "Personal"]
 
     var body: some View {
         NavigationView {
             Form {
                 TextField("Name", text: $name)
                 Picker("Type", selection: $type) {
-                    ForEach(types, id: \.self) { type in
-                        Text(type)
+                    ForEach(ExpenseType.allCases, id: \.self) { type in
+                        Text(type.rawValue)
                     }
                 }
 
@@ -36,11 +33,7 @@ struct AddView: View {
             .toolbar {
                 Button("Save") {
                     let item = ExpenseItem(name: name, type: type, amount: amount)
-                    if item.type == "Personal" {
-                        expenses.personalItems.append(item)
-                    } else {
-                        expenses.businessItems.append(item)
-                    }
+                    expenses.items.append(item)
                     dismiss()
                 }
             }

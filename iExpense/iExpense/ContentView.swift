@@ -43,39 +43,22 @@ struct ContentView: View {
         NavigationView {
             List {
                 Section(header: Text("Personal")) {
-                    ForEach(expenses.personalItems) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text(item.type)
-                                    .font(.subheadline)
-                            }
-                            Spacer()
-                            Text(item.amount, format: .currency(code: PreferredCurrency.code))
-                                .amountStyle(for: item.amount)
-                        }
+                    ForEach(expenses.items.filter { $0.isPersonal }) { item in
+                        cell(for: item)
                     }
-                    .onDelete(perform: removePersonalItem)
+                    .onDelete { removeItem(at: $0, in: .personal) }
                 }
                 Section(header: Text("Business")) {
-                        ForEach(expenses.businessItems) { item in
-                        HStack {
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text(item.type)
-                                    .font(.subheadline)
-                            }
-                            Spacer()
-                            Text(item.amount, format: .currency(code: PreferredCurrency.code))
-                                .amountStyle(for: item.amount)
-                        }
+                    ForEach(expenses.items.filter { $0.isBusiness }) { item in
+                        cell(for: item)
                     }
-                    .onDelete(perform: removeBusinessItem)
+                    .onDelete { removeItem(at: $0, in: .business) }
                 }
             }
-            .navigationTitle("iExpense")
+            .navigationTitle(
+                Text("iExpense")
+                    .accessibilityLabel("I Expense")
+            )
             .toolbar {
                 Button {
                     showingAddExpense = true
@@ -89,12 +72,45 @@ struct ContentView: View {
         }
     }
 
-    func removePersonalItem(at offsets: IndexSet) {
-        expenses.personalItems.remove(atOffsets: offsets)
+    private func cell(for expenseItem: ExpenseItem) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(expenseItem.name)
+                    .font(.headline)
+                Text(expenseItem.type.rawValue)
+                    .font(.subheadline)
+            }
+            Spacer()
+            Text(
+                expenseItem.amount,
+                format: .currency(code: PreferredCurrency.code)
+            )
+            .amountStyle(for: expenseItem.amount)
+        }
+        .accessibilityElement()
+        .accessibilityLabel("\(expenseItem.name) \(format(cost: expenseItem.amount))")
+        .accessibilityHint(expenseItem.type.rawValue)
     }
 
-    func removeBusinessItem(at offsets: IndexSet) {
-        expenses.businessItems.remove(atOffsets: offsets)
+    private func format(cost: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = PreferredCurrency.code
+
+        if let result = formatter.string(from: cost as NSNumber) {
+            return result
+        }
+        return "\(cost)"
+    }
+
+    private func removeItem(at offsets: IndexSet, in section: ExpenseType) {
+        let expensesForType = expenses.items.filter { $0.type == section }
+        offsets.forEach { indexInSection in
+            let expense = expensesForType[indexInSection]
+            if let index = expenses.items.firstIndex(of: expense) {
+                expenses.items.remove(at: index)
+            }
+        }
     }
 }
 
