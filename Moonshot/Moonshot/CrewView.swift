@@ -27,11 +27,13 @@ struct CrewView: View {
                                     Circle()
                                         .strokeBorder(.white, lineWidth: 1)
                                 )
+                                .accessibilityHidden(true)
 
                             VStack(alignment: .leading) {
                                 Text(crewMember.astronaut.name)
                                     .foregroundColor(.white)
                                     .font(.headline)
+                                    .accessibilityHeading(.h1)
                                 Text(crewMember.role)
                                     .foregroundColor(.secondary)
                             }

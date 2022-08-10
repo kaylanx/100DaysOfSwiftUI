@@ -50,6 +50,7 @@ struct ContentView: View {
                 } label: {
                     Image(systemName: showingGrid ? "rectangle.grid.1x2" : "rectangle.grid.2x2")
                 }
+                .accessibilityHidden(true)
                 .foregroundColor(.lightBackground)
 
             }

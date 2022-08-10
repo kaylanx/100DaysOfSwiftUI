@@ -21,8 +21,11 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding(.vertical)
+                        .accessibilityHidden(true)
 
-                    Text(mission.longFormattedLaunchDate)
+                    if mission.longFormattedLaunchDate.isEmpty == false {
+                        Text(mission.longFormattedLaunchDate)
+                    }
 
                     VStack(alignment: .leading) {
 
@@ -31,6 +34,7 @@ struct MissionView: View {
                         Text("Mission Highlights")
                             .font(.title.bold())
                             .padding(.bottom, 5)
+                            .accessibilityHeading(.h1)
 
                         Text(mission.description)
 
@@ -39,6 +43,7 @@ struct MissionView: View {
                         Text("Crew")
                             .font(.title.bold())
                             .padding(.bottom, 5)
+                            .accessibilityHeading(.h1)
                     }
                     .padding(.horizontal)
 
