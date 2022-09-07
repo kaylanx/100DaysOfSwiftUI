@@ -26,6 +26,10 @@
 		58D0846928C3FC0A00286646 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0846828C3FC0A00286646 /* ImageCache.swift */; };
 		58D0846B28C3FCD600286646 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0846A28C3FCD600286646 /* ImageLoader.swift */; };
 		58D0846D28C4001500286646 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0846C28C4001500286646 /* PhotoDetailView.swift */; };
+		58D0846F28C7E7E100286646 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0846E28C7E7E100286646 /* LocationFetcher.swift */; };
+		58D0847128C7EE4B00286646 /* PhotoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0847028C7EE4B00286646 /* PhotoLocation.swift */; };
+		58D0847328C7EEC900286646 /* PhotoLocation+CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0847228C7EEC900286646 /* PhotoLocation+CoreLocation.swift */; };
+		58D0847528C940E600286646 /* PhotoLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0847428C940E600286646 /* PhotoLocationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		58D0846828C3FC0A00286646 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		58D0846A28C3FCD600286646 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		58D0846C28C4001500286646 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
+		58D0846E28C7E7E100286646 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		58D0847028C7EE4B00286646 /* PhotoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLocation.swift; sourceTree = "<group>"; };
+		58D0847228C7EEC900286646 /* PhotoLocation+CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoLocation+CoreLocation.swift"; sourceTree = "<group>"; };
+		58D0847428C940E600286646 /* PhotoLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				58B1848628A44EDC000DE6BB /* NamedPhoto.swift */,
+				58D0847028C7EE4B00286646 /* PhotoLocation.swift */,
+				58D0847228C7EEC900286646 /* PhotoLocation+CoreLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +130,7 @@
 				58B1848A28A45312000DE6BB /* PhotoListView.swift */,
 				58D0845028BEB4CF00286646 /* PhotoNameView.swift */,
 				58D0846C28C4001500286646 /* PhotoDetailView.swift */,
+				58D0847428C940E600286646 /* PhotoLocationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +148,7 @@
 			children = (
 				58D0845628BEC07000286646 /* FileManager+DocumentsDirectory.swift */,
 				58D0845A28C14AA700286646 /* FileManager+Codable.swift */,
+				58D0846E28C7E7E100286646 /* LocationFetcher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -238,8 +250,12 @@
 				58B1848328A44E83000DE6BB /* ImagePicker.swift in Sources */,
 				58B1848B28A45312000DE6BB /* PhotoListView.swift in Sources */,
 				58D0846B28C3FCD600286646 /* ImageLoader.swift in Sources */,
+				58D0846F28C7E7E100286646 /* LocationFetcher.swift in Sources */,
 				58B1847228A44D7E000DE6BB /* ContentView.swift in Sources */,
+				58D0847328C7EEC900286646 /* PhotoLocation+CoreLocation.swift in Sources */,
+				58D0847128C7EE4B00286646 /* PhotoLocation.swift in Sources */,
 				58D0846028C15EB900286646 /* PreviewPhotoStorageService.swift in Sources */,
+				58D0847528C940E600286646 /* PhotoLocationView.swift in Sources */,
 				58D0845128BEB4CF00286646 /* PhotoNameView.swift in Sources */,
 				58D0845428BEBBA400286646 /* PhotoListView-ViewModel.swift in Sources */,
 				58B1847028A44D7E000DE6BB /* PhotoNamesApp.swift in Sources */,
@@ -378,6 +394,7 @@
 				DEVELOPMENT_TEAM = SR5D6FC58T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to mark where the photos were taken";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -407,6 +424,7 @@
 				DEVELOPMENT_TEAM = SR5D6FC58T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to mark where the photos were taken";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

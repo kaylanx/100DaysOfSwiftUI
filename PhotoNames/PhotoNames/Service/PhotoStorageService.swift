@@ -44,12 +44,9 @@ struct FileBasedPhotoStorageService: PhotoStorageService {
         let fileManager = FileManager()
         photos.forEach { photo in
             do {
-                print(">>>> About to try and delete \(photo.imageUrl.absoluteString)")
                 try fileManager.removeItem(at: photo.imageUrl)
-                print(">>>> \(photo.imageUrl.absoluteString) deleted")
-
             } catch {
-                print(">>>> \(error)")
+                print(error)
             }
         }
     }

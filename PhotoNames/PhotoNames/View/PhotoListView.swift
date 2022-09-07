@@ -19,22 +19,10 @@ struct PhotoListView: View {
         ZStack(alignment: .center) {
             List {
                 ForEach(viewModel.namedPhotos) { photo in
-                    NavigationLink(destination: PhotoDetailView(namedPhoto: photo)) {
-                        VStack(alignment: .leading) {
-                            CacheableAsyncImage(
-                                url: photo.imageUrl,
-                                placeholder: {
-                                    ProgressView()
-                                },
-                                image: {
-                                    Image(uiImage: $0)
-                                        .resizable()
-                                }
-                            )
-                            .frame(maxWidth: 200, maxHeight: 200)
-
-                            Text(photo.name)
-                        }
+                    NavigationLink(
+                        destination: PhotoDetailView(namedPhoto: photo)
+                    ) {
+                        cell(for: photo)
                     }
                 }
                 .onDelete(perform: delete)
@@ -50,6 +38,26 @@ struct PhotoListView: View {
                     Image(systemName: "plus")
                 }
             }
+        }
+    }
+
+    func cell(for photo: NamedPhoto) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(photo.name)
+            }
+            Spacer()
+            CacheableAsyncImage(
+                url: photo.imageUrl,
+                placeholder: {
+                    ProgressView()
+                },
+                image: {
+                    Image(uiImage: $0)
+                        .resizable()
+                }
+            )
+            .frame(maxWidth: 50, maxHeight: 50)
         }
     }
 

@@ -10,6 +10,7 @@ import Foundation
 struct NamedPhoto: Identifiable, Codable {
     var id = UUID()
     let name: String
+    let location: PhotoLocation?
 
     var imageUrl: URL {
         FileManager.documentsDirectory.appendingPathComponent(id.uuidString)
