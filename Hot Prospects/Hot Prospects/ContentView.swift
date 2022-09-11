@@ -12,7 +12,8 @@ struct ContentView: View {
 //        LearningEnvironmentObjects.ContentView()
 //        LearningTabViews.ContentView()
 //        ObservableObjects.ContentView()
-        UnderstandingSwiftsResultType.ContentView()
+//        UnderstandingSwiftsResultType.ContentView()
+        ImageInterpolationExample.ContentView()
     }
 }
 
