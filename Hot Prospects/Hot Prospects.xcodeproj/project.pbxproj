@@ -13,6 +13,7 @@
 		58D0848A28CC7EE400286646 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D0848928CC7EE400286646 /* Preview Assets.xcassets */; };
 		58D0849328CCB29200286646 /* LearningEnvironmentObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0849228CCB29200286646 /* LearningEnvironmentObjects.swift */; };
 		58D0849628CDFA4300286646 /* LearningTabViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0849528CDFA4300286646 /* LearningTabViews.swift */; };
+		58D0849B28CE069D00286646 /* ObservableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0849A28CE069D00286646 /* ObservableObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		58D0848928CC7EE400286646 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		58D0849228CCB29200286646 /* LearningEnvironmentObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningEnvironmentObjects.swift; sourceTree = "<group>"; };
 		58D0849528CDFA4300286646 /* LearningTabViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningTabViews.swift; sourceTree = "<group>"; };
+		58D0849A28CE069D00286646 /* ObservableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		58D0849028CCB26800286646 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				58D0849928CE068800286646 /* ObservableObjects */,
 				58D0849428CDFA1300286646 /* TabViews */,
 				58D0849128CCB27C00286646 /* EnvironmentObjects */,
 			);
@@ -95,6 +98,14 @@
 				58D0849528CDFA4300286646 /* LearningTabViews.swift */,
 			);
 			path = TabViews;
+			sourceTree = "<group>";
+		};
+		58D0849928CE068800286646 /* ObservableObjects */ = {
+			isa = PBXGroup;
+			children = (
+				58D0849A28CE069D00286646 /* ObservableObjects.swift */,
+			);
+			path = ObservableObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58D0848528CC7ED600286646 /* ContentView.swift in Sources */,
+				58D0849B28CE069D00286646 /* ObservableObjects.swift in Sources */,
 				58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */,
 				58D0849628CDFA4300286646 /* LearningTabViews.swift in Sources */,
 				58D0849328CCB29200286646 /* LearningEnvironmentObjects.swift in Sources */,

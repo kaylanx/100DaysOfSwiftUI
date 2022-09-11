@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
 //        LearningEnvironmentObjects.ContentView()
-        LearningTabViews.ContentView()
+//        LearningTabViews.ContentView()
+        ObservableObjects.ContentView()
     }
 }
 
