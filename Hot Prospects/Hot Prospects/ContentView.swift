@@ -13,7 +13,11 @@ struct ContentView: View {
 //        LearningTabViews.ContentView()
 //        ObservableObjects.ContentView()
 //        UnderstandingSwiftsResultType.ContentView()
-        ImageInterpolationExample.ContentView()
+//        ImageInterpolationExample.ContentView()
+//        CreatingContextMenus.ContentView()
+//        CustomRowSwipeActions.ContentView()
+//        LocalNotifications.ContentView()
+        SPM.ContentView()
     }
 }
 

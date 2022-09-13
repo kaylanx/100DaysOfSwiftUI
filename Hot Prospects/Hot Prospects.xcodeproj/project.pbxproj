@@ -16,6 +16,11 @@
 		58D0849B28CE069D00286646 /* ObservableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0849A28CE069D00286646 /* ObservableObjects.swift */; };
 		58D0849E28CE080500286646 /* UnderstandingSwiftsResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0849D28CE080500286646 /* UnderstandingSwiftsResultType.swift */; };
 		58D084A128CE0CE300286646 /* ImageInterpolationExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D084A028CE0CE300286646 /* ImageInterpolationExample.swift */; };
+		58D084A428D1277D00286646 /* CreatingContextMenus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D084A328D1277D00286646 /* CreatingContextMenus.swift */; };
+		58D084A728D12D0800286646 /* CustomRowSwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D084A628D12D0800286646 /* CustomRowSwipeActions.swift */; };
+		58D084AA28D12F4100286646 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D084A928D12F4100286646 /* LocalNotifications.swift */; };
+		58D084AD28D1324800286646 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = 58D084AC28D1324800286646 /* SamplePackage */; };
+		58D084B028D1326A00286646 /* SPM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D084AF28D1326A00286646 /* SPM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,10 @@
 		58D0849A28CE069D00286646 /* ObservableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObjects.swift; sourceTree = "<group>"; };
 		58D0849D28CE080500286646 /* UnderstandingSwiftsResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderstandingSwiftsResultType.swift; sourceTree = "<group>"; };
 		58D084A028CE0CE300286646 /* ImageInterpolationExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInterpolationExample.swift; sourceTree = "<group>"; };
+		58D084A328D1277D00286646 /* CreatingContextMenus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingContextMenus.swift; sourceTree = "<group>"; };
+		58D084A628D12D0800286646 /* CustomRowSwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRowSwipeActions.swift; sourceTree = "<group>"; };
+		58D084A928D12F4100286646 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		58D084AF28D1326A00286646 /* SPM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D084AD28D1324800286646 /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +91,10 @@
 		58D0849028CCB26800286646 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				58D084AE28D1325600286646 /* SPM */,
+				58D084A828D12F2800286646 /* LocalNotifications */,
+				58D084A528D12CF400286646 /* CustomRowSwipeActions */,
+				58D084A228D1276700286646 /* ContextMenus */,
 				58D0849F28CE0CCC00286646 /* ImageInterpolation */,
 				58D0849C28CE07EF00286646 /* UnderstandingResultType */,
 				58D0849928CE068800286646 /* ObservableObjects */,
@@ -130,6 +144,38 @@
 			path = ImageInterpolation;
 			sourceTree = "<group>";
 		};
+		58D084A228D1276700286646 /* ContextMenus */ = {
+			isa = PBXGroup;
+			children = (
+				58D084A328D1277D00286646 /* CreatingContextMenus.swift */,
+			);
+			path = ContextMenus;
+			sourceTree = "<group>";
+		};
+		58D084A528D12CF400286646 /* CustomRowSwipeActions */ = {
+			isa = PBXGroup;
+			children = (
+				58D084A628D12D0800286646 /* CustomRowSwipeActions.swift */,
+			);
+			path = CustomRowSwipeActions;
+			sourceTree = "<group>";
+		};
+		58D084A828D12F2800286646 /* LocalNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				58D084A928D12F4100286646 /* LocalNotifications.swift */,
+			);
+			path = LocalNotifications;
+			sourceTree = "<group>";
+		};
+		58D084AE28D1325600286646 /* SPM */ = {
+			isa = PBXGroup;
+			children = (
+				58D084AF28D1326A00286646 /* SPM.swift */,
+			);
+			path = SPM;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +192,9 @@
 			dependencies = (
 			);
 			name = "Hot Prospects";
+			packageProductDependencies = (
+				58D084AC28D1324800286646 /* SamplePackage */,
+			);
 			productName = "Hot Prospects";
 			productReference = 58D0847F28CC7ED600286646 /* Hot Prospects.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 58D0847628CC7ED600286646;
+			packageReferences = (
+				58D084AB28D1324800286646 /* XCRemoteSwiftPackageReference "SamplePackage" */,
+			);
 			productRefGroup = 58D0848028CC7ED600286646 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -202,11 +254,15 @@
 			files = (
 				58D0848528CC7ED600286646 /* ContentView.swift in Sources */,
 				58D0849B28CE069D00286646 /* ObservableObjects.swift in Sources */,
+				58D084A728D12D0800286646 /* CustomRowSwipeActions.swift in Sources */,
 				58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */,
 				58D0849628CDFA4300286646 /* LearningTabViews.swift in Sources */,
 				58D084A128CE0CE300286646 /* ImageInterpolationExample.swift in Sources */,
 				58D0849328CCB29200286646 /* LearningEnvironmentObjects.swift in Sources */,
+				58D084B028D1326A00286646 /* SPM.swift in Sources */,
 				58D0849E28CE080500286646 /* UnderstandingSwiftsResultType.swift in Sources */,
+				58D084AA28D12F4100286646 /* LocalNotifications.swift in Sources */,
+				58D084A428D1277D00286646 /* CreatingContextMenus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58D084AB28D1324800286646 /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/SamplePackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58D084AC28D1324800286646 /* SamplePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58D084AB28D1324800286646 /* XCRemoteSwiftPackageReference "SamplePackage" */;
+			productName = SamplePackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58D0847728CC7ED600286646 /* Project object */;
 }
