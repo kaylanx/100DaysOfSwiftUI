@@ -17,7 +17,8 @@ struct ContentView: View {
 //        CreatingContextMenus.ContentView()
 //        CustomRowSwipeActions.ContentView()
 //        LocalNotifications.ContentView()
-        SPM.ContentView()
+//        SPM.ContentView()
+        MainView()
     }
 }
 

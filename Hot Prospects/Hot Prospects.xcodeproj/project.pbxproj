@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5802AA5C28D2701500F5DDD9 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA5B28D2701500F5DDD9 /* ProspectsView.swift */; };
+		5802AA5E28D2703000F5DDD9 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA5D28D2703000F5DDD9 /* MeView.swift */; };
+		5802AA6028D2708B00F5DDD9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA5F28D2708B00F5DDD9 /* MainView.swift */; };
+		5802AA6328D276CF00F5DDD9 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA6228D276CF00F5DDD9 /* Prospect.swift */; };
+		5802AA6528D2774D00F5DDD9 /* Prospects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA6428D2774D00F5DDD9 /* Prospects.swift */; };
 		58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */; };
 		58D0848528CC7ED600286646 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848428CC7ED600286646 /* ContentView.swift */; };
 		58D0848728CC7EE400286646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D0848628CC7EE400286646 /* Assets.xcassets */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5802AA5B28D2701500F5DDD9 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
+		5802AA5D28D2703000F5DDD9 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		5802AA5F28D2708B00F5DDD9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5802AA6228D276CF00F5DDD9 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
+		5802AA6428D2774D00F5DDD9 /* Prospects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospects.swift; sourceTree = "<group>"; };
 		58D0847F28CC7ED600286646 /* Hot Prospects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hot Prospects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hot_ProspectsApp.swift; sourceTree = "<group>"; };
 		58D0848428CC7ED600286646 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +62,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5802AA5A28D26FEB00F5DDD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5802AA5B28D2701500F5DDD9 /* ProspectsView.swift */,
+				5802AA5D28D2703000F5DDD9 /* MeView.swift */,
+				5802AA5F28D2708B00F5DDD9 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5802AA6128D276B800F5DDD9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5802AA6228D276CF00F5DDD9 /* Prospect.swift */,
+				5802AA6428D2774D00F5DDD9 /* Prospects.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		58D0847628CC7ED600286646 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +100,8 @@
 		58D0848128CC7ED600286646 /* Hot Prospects */ = {
 			isa = PBXGroup;
 			children = (
+				5802AA6128D276B800F5DDD9 /* Models */,
+				5802AA5A28D26FEB00F5DDD9 /* Views */,
 				58D0849028CCB26800286646 /* Learning */,
 				58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */,
 				58D0848428CC7ED600286646 /* ContentView.swift */,
@@ -252,6 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5802AA5C28D2701500F5DDD9 /* ProspectsView.swift in Sources */,
+				5802AA6328D276CF00F5DDD9 /* Prospect.swift in Sources */,
+				5802AA6028D2708B00F5DDD9 /* MainView.swift in Sources */,
 				58D0848528CC7ED600286646 /* ContentView.swift in Sources */,
 				58D0849B28CE069D00286646 /* ObservableObjects.swift in Sources */,
 				58D084A728D12D0800286646 /* CustomRowSwipeActions.swift in Sources */,
@@ -262,7 +296,9 @@
 				58D084B028D1326A00286646 /* SPM.swift in Sources */,
 				58D0849E28CE080500286646 /* UnderstandingSwiftsResultType.swift in Sources */,
 				58D084AA28D12F4100286646 /* LocalNotifications.swift in Sources */,
+				5802AA6528D2774D00F5DDD9 /* Prospects.swift in Sources */,
 				58D084A428D1277D00286646 /* CreatingContextMenus.swift in Sources */,
+				5802AA5E28D2703000F5DDD9 /* MeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
