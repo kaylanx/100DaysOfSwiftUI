@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ProspectsView: View {
 
@@ -14,9 +15,10 @@ struct ProspectsView: View {
     }
     let filter: FilterType
 
-    @EnvironmentObject var prospects: Prospects
+    @EnvironmentObject private var prospects: Prospects
+    @State private var isShowingScanner = false
 
-    var title: String {
+    private var title: String {
         switch filter {
             case .none:
                 return "Everyone"
@@ -27,7 +29,7 @@ struct ProspectsView: View {
         }
     }
 
-    var filteredProspects: [Prospect] {
+    private var filteredProspects: [Prospect] {
         switch filter {
             case .none:
                 return prospects.people
@@ -48,19 +50,65 @@ struct ProspectsView: View {
                         Text(prospect.emailAddress)
                             .foregroundColor(.secondary)
                     }
+                    .swipeActions {
+                        if prospect.isContacted {
+                            markUncontactedButton(for: prospect)
+                        } else {
+                            markContactedButton(for: prospect)
+                        }
+                    }
                 }
             }
             .navigationTitle(title)
             .toolbar {
                 Button {
-                    let prospect = Prospect()
-                    prospect.name = "Paul Hudson"
-                    prospect.emailAddress = "paul@hackingwithswift.com"
-                    prospects.people.append(prospect)
+                    isShowingScanner = true
                 } label: {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
             }
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(
+                    codeTypes: [.qr],
+                    simulatedData: "Andy Kayley\n100days@kayley.name",
+                    completion: handleScan
+                )
+            }
+        }
+    }
+
+    private func markUncontactedButton(for prospect: Prospect) -> some View {
+        Button {
+            prospects.toggleContacted(for: prospect)
+        } label: {
+            Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
+        }
+        .tint(.blue)
+    }
+
+    private func markContactedButton(for prospect: Prospect) -> some View {
+        Button {
+            prospects.toggleContacted(for: prospect)
+        } label: {
+            Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
+        }
+        .tint(.green)
+    }
+
+    private func handleScan(result: Result<ScanResult, ScanError>) {
+        isShowingScanner = false
+        switch result {
+            case .success(let result):
+                let details = result.string.components(separatedBy: "\n")
+                guard details.count == 2 else { return }
+
+                let person = Prospect()
+                person.name = details[0]
+                person.emailAddress = details[1]
+
+                prospects.people.append(person)
+            case .failure(let error):
+                print("Scanning failed: \(error.localizedDescription)")
         }
     }
 }
