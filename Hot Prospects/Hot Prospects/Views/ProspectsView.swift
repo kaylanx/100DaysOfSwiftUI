@@ -41,15 +41,30 @@ struct ProspectsView: View {
         }
     }
 
+    private func contactedImage(for prospect: Prospect) -> some View {
+        Group {
+            if prospect.isContacted && filter == .none {
+                Spacer()
+                Image(systemName: "person.crop.circle.fill.badge.checkmark")
+                    .foregroundColor(.green)
+            } else {
+                EmptyView()
+            }
+        }
+    }
+
     var body: some View {
         NavigationView {
             List {
                 ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        contactedImage(for: prospect)
                     }
                     .swipeActions {
                         if prospect.isContacted {
