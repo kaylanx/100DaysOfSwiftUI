@@ -11,23 +11,23 @@ final class Prospect: Identifiable, Codable {
     var id = UUID()
     var name = "Anonymous"
     var emailAddress = ""
+    var dateAdded = Date()
     fileprivate(set) var isContacted = false
 }
 
 @MainActor final class Prospects: ObservableObject {
 
-    private static let savedDataKey = "SavedData"
+    private static let savedDataKey = "SavedData.json"
 
     @Published private(set) var people: [Prospect]
 
     init() {
-        if let data = UserDefaults.standard.data(forKey: Prospects.savedDataKey) {
-            if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                people = decoded
-                return
-            }
+        do {
+            people = try FileManager.decode(Prospects.savedDataKey)
+        } catch {
+            print(error)
+            people = []
         }
-        people = []
     }
 
     func toggleContacted(for prospect: Prospect) {
@@ -42,8 +42,10 @@ final class Prospect: Identifiable, Codable {
     }
 
     private func save() {
-        if let encoded = try? JSONEncoder().encode(people) {
-            UserDefaults.standard.set(encoded, forKey: Prospects.savedDataKey)
+        do {
+            try FileManager.encode(value: people, to: Prospects.savedDataKey)
+        } catch {
+            print(error)
         }
     }
 }

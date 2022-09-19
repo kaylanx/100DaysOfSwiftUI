@@ -13,6 +13,7 @@
 		5802AA6328D276CF00F5DDD9 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA6228D276CF00F5DDD9 /* Prospect.swift */; };
 		583D885B28D3CCF600C31AB7 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 583D885A28D3CCF600C31AB7 /* CodeScanner */; };
 		583D885E28D8A30C00C31AB7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D885D28D8A30C00C31AB7 /* ImageSaver.swift */; };
+		583D886128D8B7B800C31AB7 /* FileManager+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D885F28D8B7B800C31AB7 /* FileManager+Codable.swift */; };
 		58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */; };
 		58D0848528CC7ED600286646 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848428CC7ED600286646 /* ContentView.swift */; };
 		58D0848728CC7EE400286646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D0848628CC7EE400286646 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		5802AA5F28D2708B00F5DDD9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5802AA6228D276CF00F5DDD9 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 		583D885D28D8A30C00C31AB7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		583D885F28D8B7B800C31AB7 /* FileManager+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Codable.swift"; sourceTree = "<group>"; };
 		58D0847F28CC7ED600286646 /* Hot Prospects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hot Prospects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hot_ProspectsApp.swift; sourceTree = "<group>"; };
 		58D0848428CC7ED600286646 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		583D885C28D8A2FD00C31AB7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				583D885F28D8B7B800C31AB7 /* FileManager+Codable.swift */,
 				583D885D28D8A30C00C31AB7 /* ImageSaver.swift */,
 			);
 			path = Utils;
@@ -304,6 +307,7 @@
 				58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */,
 				58D0849628CDFA4300286646 /* LearningTabViews.swift in Sources */,
 				58D084A128CE0CE300286646 /* ImageInterpolationExample.swift in Sources */,
+				583D886128D8B7B800C31AB7 /* FileManager+Codable.swift in Sources */,
 				58D0849328CCB29200286646 /* LearningEnvironmentObjects.swift in Sources */,
 				58D084B028D1326A00286646 /* SPM.swift in Sources */,
 				58D0849E28CE080500286646 /* UnderstandingSwiftsResultType.swift in Sources */,
