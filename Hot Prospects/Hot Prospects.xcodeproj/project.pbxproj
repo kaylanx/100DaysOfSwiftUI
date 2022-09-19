@@ -12,6 +12,7 @@
 		5802AA6028D2708B00F5DDD9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA5F28D2708B00F5DDD9 /* MainView.swift */; };
 		5802AA6328D276CF00F5DDD9 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5802AA6228D276CF00F5DDD9 /* Prospect.swift */; };
 		583D885B28D3CCF600C31AB7 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 583D885A28D3CCF600C31AB7 /* CodeScanner */; };
+		583D885E28D8A30C00C31AB7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D885D28D8A30C00C31AB7 /* ImageSaver.swift */; };
 		58D0848328CC7ED600286646 /* Hot_ProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */; };
 		58D0848528CC7ED600286646 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0848428CC7ED600286646 /* ContentView.swift */; };
 		58D0848728CC7EE400286646 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58D0848628CC7EE400286646 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		5802AA5D28D2703000F5DDD9 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 		5802AA5F28D2708B00F5DDD9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		5802AA6228D276CF00F5DDD9 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
+		583D885D28D8A30C00C31AB7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		58D0847F28CC7ED600286646 /* Hot Prospects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hot Prospects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58D0848228CC7ED600286646 /* Hot_ProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hot_ProspectsApp.swift; sourceTree = "<group>"; };
 		58D0848428CC7ED600286646 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		583D885C28D8A2FD00C31AB7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				583D885D28D8A30C00C31AB7 /* ImageSaver.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		58D0847628CC7ED600286646 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		58D0848128CC7ED600286646 /* Hot Prospects */ = {
 			isa = PBXGroup;
 			children = (
+				583D885C28D8A2FD00C31AB7 /* Utils */,
 				5802AA6128D276B800F5DDD9 /* Models */,
 				5802AA5A28D26FEB00F5DDD9 /* Views */,
 				58D0849028CCB26800286646 /* Learning */,
@@ -299,6 +310,7 @@
 				58D084AA28D12F4100286646 /* LocalNotifications.swift in Sources */,
 				58D084A428D1277D00286646 /* CreatingContextMenus.swift in Sources */,
 				5802AA5E28D2703000F5DDD9 /* MeView.swift in Sources */,
+				583D885E28D8A30C00C31AB7 /* ImageSaver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +443,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -461,6 +474,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan QR codes.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "We want to save your QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
