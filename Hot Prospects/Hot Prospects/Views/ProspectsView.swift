@@ -11,6 +11,8 @@ import CodeScanner
 
 struct ProspectsView: View {
 
+    @State private var sortOption = SortOptions.name
+
     enum FilterType {
         case none, contacted, uncontacted
     }
@@ -18,6 +20,7 @@ struct ProspectsView: View {
 
     @EnvironmentObject private var prospects: Prospects
     @State private var isShowingScanner = false
+    @State private var isShowingSortOptions = false
 
     private var title: String {
         switch filter {
@@ -33,11 +36,11 @@ struct ProspectsView: View {
     private var filteredProspects: [Prospect] {
         switch filter {
             case .none:
-                return prospects.people
+                return prospects.all(sortedBy: sortOption)
             case .contacted:
-                return prospects.people.filter { $0.isContacted }
+                return prospects.contacted(sortedBy: sortOption)
             case .uncontacted:
-                return prospects.people.filter { !$0.isContacted }
+                return prospects.uncontacted(sortedBy: sortOption)
         }
     }
 
@@ -83,13 +86,34 @@ struct ProspectsView: View {
                 } label: {
                     Label("Scan", systemImage: "qrcode.viewfinder")
                 }
+
+                Button {
+                    isShowingSortOptions = true
+                } label: {
+                    Label("Sort", systemImage: "arrow.up.arrow.down.square")
+                }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(
                     codeTypes: [.qr],
-                    simulatedData: "Andy Kayley\n100days@kayley.name",
+                    simulatedData: "\(UUID().uuidString)Andy Kayley\n\(UUID().uuidString)100days@kayley.name",
                     completion: handleScan
                 )
+            }
+            .confirmationDialog("Sort by", isPresented: $isShowingSortOptions) {
+                Button("Name") {
+                    withAnimation {
+                        sortOption = .name
+                    }
+                }
+                Button("Most recent") {
+                    withAnimation {
+                        sortOption = .dateAdded
+                    }
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Select a sort option")
             }
         }
     }
