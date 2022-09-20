@@ -12,6 +12,7 @@
 		583D887428DA447200C31AB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583D887328DA447200C31AB7 /* Assets.xcassets */; };
 		583D887728DA447200C31AB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583D887628DA447200C31AB7 /* Preview Assets.xcassets */; };
 		583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D887F28DA46AE00C31AB7 /* GesturesView.swift */; };
+		583D888328DA547600C31AB7 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888228DA547600C31AB7 /* Haptics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		583D887328DA447200C31AB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		583D887628DA447200C31AB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		583D887F28DA46AE00C31AB7 /* GesturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesView.swift; sourceTree = "<group>"; };
+		583D888228DA547600C31AB7 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		583D887D28DA44F000C31AB7 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				583D888128DA546600C31AB7 /* Haptics */,
 				583D887E28DA469900C31AB7 /* Gestures */,
 			);
 			path = Learning;
@@ -84,6 +87,14 @@
 				583D887F28DA46AE00C31AB7 /* GesturesView.swift */,
 			);
 			path = Gestures;
+			sourceTree = "<group>";
+		};
+		583D888128DA546600C31AB7 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				583D888228DA547600C31AB7 /* Haptics.swift */,
+			);
+			path = Haptics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583D888328DA547600C31AB7 /* Haptics.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,

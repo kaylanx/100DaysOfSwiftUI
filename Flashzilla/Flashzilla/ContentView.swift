@@ -15,7 +15,8 @@ struct ContentView: View {
 //        Gestures.ChildTapWinsView()
 //        Gestures.ParentTapWinsView()
 //        Gestures.BothGesturesExecuteView()
-        Gestures.GestureSequencingView()
+//        Gestures.GestureSequencingView()
+        Haptics.ContentView()
     }
 }
 
