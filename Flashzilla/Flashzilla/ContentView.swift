@@ -16,7 +16,10 @@ struct ContentView: View {
 //        Gestures.ParentTapWinsView()
 //        Gestures.BothGesturesExecuteView()
 //        Gestures.GestureSequencingView()
-        Haptics.ContentView()
+//        Haptics.ContentView()
+//        HitTesting.AllowsHitTestingContentView()
+//        HitTesting.SpacersDontGetTaps()
+        HitTesting.SpacersGetsTaps()
     }
 }
 

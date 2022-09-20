@@ -13,6 +13,7 @@
 		583D887728DA447200C31AB7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583D887628DA447200C31AB7 /* Preview Assets.xcassets */; };
 		583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D887F28DA46AE00C31AB7 /* GesturesView.swift */; };
 		583D888328DA547600C31AB7 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888228DA547600C31AB7 /* Haptics.swift */; };
+		583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888528DA5C5000C31AB7 /* HitTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		583D887628DA447200C31AB7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		583D887F28DA46AE00C31AB7 /* GesturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesView.swift; sourceTree = "<group>"; };
 		583D888228DA547600C31AB7 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		583D888528DA5C5000C31AB7 /* HitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 		583D887D28DA44F000C31AB7 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				583D888428DA5C4300C31AB7 /* HitTesting */,
 				583D888128DA546600C31AB7 /* Haptics */,
 				583D887E28DA469900C31AB7 /* Gestures */,
 			);
@@ -95,6 +98,14 @@
 				583D888228DA547600C31AB7 /* Haptics.swift */,
 			);
 			path = Haptics;
+			sourceTree = "<group>";
+		};
+		583D888428DA5C4300C31AB7 /* HitTesting */ = {
+			isa = PBXGroup;
+			children = (
+				583D888528DA5C5000C31AB7 /* HitTesting.swift */,
+			);
+			path = HitTesting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				583D888328DA547600C31AB7 /* Haptics.swift in Sources */,
+				583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,
