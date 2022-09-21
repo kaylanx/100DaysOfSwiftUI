@@ -19,7 +19,13 @@ struct ContentView: View {
 //        Haptics.ContentView()
 //        HitTesting.AllowsHitTestingContentView()
 //        HitTesting.SpacersDontGetTaps()
-        HitTesting.SpacersGetsTaps()
+//        HitTesting.SpacersGetsTaps()
+//        CombineLearning.ContentView()
+//        ScenePhase.ContentView()
+//        Accessibility.DifferentiateWithoutColor()
+//        Accessibility.ReduceMotion()
+//        Accessibility.ReduceMotion2()
+        Accessibility.ReduceTransparency()
     }
 }
 

@@ -14,6 +14,9 @@
 		583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D887F28DA46AE00C31AB7 /* GesturesView.swift */; };
 		583D888328DA547600C31AB7 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888228DA547600C31AB7 /* Haptics.swift */; };
 		583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888528DA5C5000C31AB7 /* HitTesting.swift */; };
+		583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888828DBA5F500C31AB7 /* CombineLearning.swift */; };
+		583D888C28DBA91700C31AB7 /* ScenePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888B28DBA91700C31AB7 /* ScenePhase.swift */; };
+		583D888F28DBAC2D00C31AB7 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888E28DBAC2D00C31AB7 /* Accessibility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		583D887F28DA46AE00C31AB7 /* GesturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesView.swift; sourceTree = "<group>"; };
 		583D888228DA547600C31AB7 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		583D888528DA5C5000C31AB7 /* HitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitTesting.swift; sourceTree = "<group>"; };
+		583D888828DBA5F500C31AB7 /* CombineLearning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLearning.swift; sourceTree = "<group>"; };
+		583D888B28DBA91700C31AB7 /* ScenePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePhase.swift; sourceTree = "<group>"; };
+		583D888E28DBAC2D00C31AB7 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 		583D887D28DA44F000C31AB7 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				583D888D28DBAC1900C31AB7 /* Accessibility */,
+				583D888A28DBA90400C31AB7 /* ScenePhase */,
+				583D888728DBA55100C31AB7 /* Combine */,
 				583D888428DA5C4300C31AB7 /* HitTesting */,
 				583D888128DA546600C31AB7 /* Haptics */,
 				583D887E28DA469900C31AB7 /* Gestures */,
@@ -106,6 +115,30 @@
 				583D888528DA5C5000C31AB7 /* HitTesting.swift */,
 			);
 			path = HitTesting;
+			sourceTree = "<group>";
+		};
+		583D888728DBA55100C31AB7 /* Combine */ = {
+			isa = PBXGroup;
+			children = (
+				583D888828DBA5F500C31AB7 /* CombineLearning.swift */,
+			);
+			path = Combine;
+			sourceTree = "<group>";
+		};
+		583D888A28DBA90400C31AB7 /* ScenePhase */ = {
+			isa = PBXGroup;
+			children = (
+				583D888B28DBA91700C31AB7 /* ScenePhase.swift */,
+			);
+			path = ScenePhase;
+			sourceTree = "<group>";
+		};
+		583D888D28DBAC1900C31AB7 /* Accessibility */ = {
+			isa = PBXGroup;
+			children = (
+				583D888E28DBAC2D00C31AB7 /* Accessibility.swift */,
+			);
+			path = Accessibility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,8 +214,11 @@
 				583D888328DA547600C31AB7 /* Haptics.swift in Sources */,
 				583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
+				583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,
+				583D888F28DBAC2D00C31AB7 /* Accessibility.swift in Sources */,
+				583D888C28DBA91700C31AB7 /* ScenePhase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
