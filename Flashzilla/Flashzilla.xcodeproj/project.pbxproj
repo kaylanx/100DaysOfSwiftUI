@@ -17,6 +17,10 @@
 		583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888828DBA5F500C31AB7 /* CombineLearning.swift */; };
 		583D888C28DBA91700C31AB7 /* ScenePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888B28DBA91700C31AB7 /* ScenePhase.swift */; };
 		583D888F28DBAC2D00C31AB7 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D888E28DBAC2D00C31AB7 /* Accessibility.swift */; };
+		583D889128DCF4EF00C31AB7 /* LearningContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889028DCF4EF00C31AB7 /* LearningContentView.swift */; };
+		583D889328DCF5FB00C31AB7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889228DCF5FB00C31AB7 /* Card.swift */; };
+		583D889528DCF62C00C31AB7 /* Card+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889428DCF62C00C31AB7 /* Card+Previews.swift */; };
+		583D889A28DCF72C00C31AB7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889928DCF72C00C31AB7 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +35,10 @@
 		583D888828DBA5F500C31AB7 /* CombineLearning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLearning.swift; sourceTree = "<group>"; };
 		583D888B28DBA91700C31AB7 /* ScenePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScenePhase.swift; sourceTree = "<group>"; };
 		583D888E28DBAC2D00C31AB7 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessibility.swift; sourceTree = "<group>"; };
+		583D889028DCF4EF00C31AB7 /* LearningContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningContentView.swift; sourceTree = "<group>"; };
+		583D889228DCF5FB00C31AB7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		583D889428DCF62C00C31AB7 /* Card+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Previews.swift"; sourceTree = "<group>"; };
+		583D889928DCF72C00C31AB7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +71,14 @@
 		583D886E28DA446D00C31AB7 /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
-				583D887D28DA44F000C31AB7 /* Learning */,
+				583D889B28DCFA0400C31AB7 /* ViewModifiers */,
+				583D889828DCF71D00C31AB7 /* Views */,
+				583D889628DCF68100C31AB7 /* Models */,
 				583D886F28DA446D00C31AB7 /* FlashzillaApp.swift */,
 				583D887128DA446D00C31AB7 /* ContentView.swift */,
 				583D887328DA447200C31AB7 /* Assets.xcassets */,
 				583D887528DA447200C31AB7 /* Preview Content */,
+				583D887D28DA44F000C31AB7 /* Learning */,
 			);
 			path = Flashzilla;
 			sourceTree = "<group>";
@@ -75,6 +86,7 @@
 		583D887528DA447200C31AB7 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				583D889728DCF68C00C31AB7 /* Models */,
 				583D887628DA447200C31AB7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -89,6 +101,7 @@
 				583D888428DA5C4300C31AB7 /* HitTesting */,
 				583D888128DA546600C31AB7 /* Haptics */,
 				583D887E28DA469900C31AB7 /* Gestures */,
+				583D889028DCF4EF00C31AB7 /* LearningContentView.swift */,
 			);
 			path = Learning;
 			sourceTree = "<group>";
@@ -139,6 +152,37 @@
 				583D888E28DBAC2D00C31AB7 /* Accessibility.swift */,
 			);
 			path = Accessibility;
+			sourceTree = "<group>";
+		};
+		583D889628DCF68100C31AB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				583D889228DCF5FB00C31AB7 /* Card.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		583D889728DCF68C00C31AB7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				583D889428DCF62C00C31AB7 /* Card+Previews.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		583D889828DCF71D00C31AB7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				583D889928DCF72C00C31AB7 /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		583D889B28DCFA0400C31AB7 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,11 +257,15 @@
 			files = (
 				583D888328DA547600C31AB7 /* Haptics.swift in Sources */,
 				583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */,
+				583D889528DCF62C00C31AB7 /* Card+Previews.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */,
+				583D889128DCF4EF00C31AB7 /* LearningContentView.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,
+				583D889328DCF5FB00C31AB7 /* Card.swift in Sources */,
 				583D888F28DBAC2D00C31AB7 /* Accessibility.swift in Sources */,
+				583D889A28DCF72C00C31AB7 /* CardView.swift in Sources */,
 				583D888C28DBA91700C31AB7 /* ScenePhase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +402,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,7 +431,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
