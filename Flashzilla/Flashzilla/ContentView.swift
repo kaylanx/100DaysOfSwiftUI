@@ -17,11 +17,35 @@ extension View {
 struct ContentView: View {
 
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
+    @Environment(\.accessibilityVoiceOverEnabled) private var voiceOverEnabled
     @Environment(\.scenePhase) private var scenePhase
     @State private var isActive = true
     @State private var cards = Array<Card>(repeating: Card.example, count: 10)
     @State private var timeRemaining = 100
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    private var accessibilityFeaturesEnabled: Bool {
+        differentiateWithoutColor || voiceOverEnabled
+    }
+
+    private func removeCardButton(
+        systemImageName: String,
+        accessibilityLabel: String,
+        accessibilityHint: String
+    ) -> some View {
+        Button {
+            withAnimation {
+                removeCard(at: cards.count - 1)
+            }
+        } label: {
+            Image(systemName: systemImageName)
+                .padding()
+                .background(.black.opacity(0.7))
+                .clipShape(Circle())
+        }
+        .accessibilityLabel(accessibilityLabel)
+        .accessibilityHint(accessibilityHint)
+    }
 
     var body: some View {
         ZStack {
@@ -49,6 +73,8 @@ struct ContentView: View {
                             }
                         }
                         .stacked(at: index, in: cards.count)
+                        .allowsHitTesting(isTopCard(at: index))
+                        .accessibilityHidden(!isTopCard(at: index))
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
@@ -61,20 +87,21 @@ struct ContentView: View {
                 }
             }
 
-            if differentiateWithoutColor {
+            if accessibilityFeaturesEnabled {
                 VStack {
                     Spacer()
-
                     HStack {
-                        Image(systemName: "xmark.circle")
-                            .padding()
-                            .background(.black.opacity(0.7))
-                            .clipShape(Circle())
+                        removeCardButton(
+                            systemImageName: "xmark.circle",
+                            accessibilityLabel: "Wrong",
+                            accessibilityHint: "Mark your answer as being incorrect"
+                        )
                         Spacer()
-                        Image(systemName: "checkmark.circle")
-                            .padding()
-                            .background(.black.opacity(0.7))
-                            .clipShape(Circle())
+                        removeCardButton(
+                            systemImageName: "checkmark.circle",
+                            accessibilityLabel: "Correct",
+                            accessibilityHint: "Mark your answer as being correct"
+                        )
                     }
                     .foregroundColor(.white)
                     .font(.largeTitle)
@@ -100,7 +127,12 @@ struct ContentView: View {
         }
     }
 
+    private func isTopCard(at index: Int) -> Bool {
+        index == cards.count - 1
+    }
+
     private func removeCard(at index: Int) {
+        guard index >= 0 else { return }
         cards.remove(at: index)
     }
 
