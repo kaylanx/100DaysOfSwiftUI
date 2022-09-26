@@ -21,6 +21,7 @@
 		583D889328DCF5FB00C31AB7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889228DCF5FB00C31AB7 /* Card.swift */; };
 		583D889528DCF62C00C31AB7 /* Card+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889428DCF62C00C31AB7 /* Card+Previews.swift */; };
 		583D889A28DCF72C00C31AB7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889928DCF72C00C31AB7 /* CardView.swift */; };
+		583D889D28E253E400C31AB7 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889C28E253E400C31AB7 /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		583D889228DCF5FB00C31AB7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		583D889428DCF62C00C31AB7 /* Card+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Previews.swift"; sourceTree = "<group>"; };
 		583D889928DCF72C00C31AB7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		583D889C28E253E400C31AB7 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				583D889928DCF72C00C31AB7 /* CardView.swift */,
+				583D889C28E253E400C31AB7 /* EditCards.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				583D888328DA547600C31AB7 /* Haptics.swift in Sources */,
 				583D888628DA5C5100C31AB7 /* HitTesting.swift in Sources */,
 				583D889528DCF62C00C31AB7 /* Card+Previews.swift in Sources */,
+				583D889D28E253E400C31AB7 /* EditCards.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */,
 				583D889128DCF4EF00C31AB7 /* LearningContentView.swift in Sources */,

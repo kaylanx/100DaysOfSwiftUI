@@ -19,8 +19,9 @@ struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOverEnabled
     @Environment(\.scenePhase) private var scenePhase
+    @State private var isShowingEditScreen = false
     @State private var isActive = true
-    @State private var cards = Array<Card>(repeating: Card.example, count: 10)
+    @State private var cards = [Card]()
     @State private var timeRemaining = 100
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -38,13 +39,17 @@ struct ContentView: View {
                 removeCard(at: cards.count - 1)
             }
         } label: {
-            Image(systemName: systemImageName)
-                .padding()
-                .background(.black.opacity(0.7))
-                .clipShape(Circle())
+            styledImage(systemName: systemImageName)
         }
         .accessibilityLabel(accessibilityLabel)
         .accessibilityHint(accessibilityHint)
+    }
+
+    private func styledImage(systemName: String) -> some View {
+        Image(systemName: systemName)
+            .padding()
+            .background(.black.opacity(0.7))
+            .clipShape(Circle())
     }
 
     var body: some View {
@@ -87,6 +92,22 @@ struct ContentView: View {
                 }
             }
 
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button {
+                        isShowingEditScreen = true
+                    } label: {
+                        styledImage(systemName: "plus.circle")
+                    }
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
+
             if accessibilityFeaturesEnabled {
                 VStack {
                     Spacer()
@@ -125,6 +146,20 @@ struct ContentView: View {
                 isActive = false
             }
         }
+        .sheet(
+            isPresented: $isShowingEditScreen,
+            onDismiss: resetCards,
+            content: EditCards.init
+        )
+        .onAppear(perform: resetCards)
+    }
+
+    private func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "Cards") {
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decoded
+            }
+        }
     }
 
     private func isTopCard(at index: Int) -> Bool {
@@ -137,9 +172,9 @@ struct ContentView: View {
     }
 
     private func resetCards() {
-        cards = [Card](repeating: Card.example, count: 10)
         timeRemaining = 100
         isActive = true
+        loadData()
     }
 }
 

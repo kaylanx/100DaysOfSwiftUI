@@ -11,3 +11,7 @@ struct Card {
     let prompt: String
     let answer: String 
 }
+
+extension Card: Codable { }
+
+extension Card: Hashable { }
