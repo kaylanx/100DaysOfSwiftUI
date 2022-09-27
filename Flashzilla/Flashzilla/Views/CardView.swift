@@ -10,7 +10,7 @@ import SwiftUI
 struct CardView: View {
 
     let card: Card
-    let onRemoved: (() -> Void)?
+    let onAnsweredCorrectly: ((Bool) -> Void)?
 
     private let feedback = UINotificationFeedbackGenerator()
 
@@ -38,7 +38,7 @@ struct CardView: View {
         differentiateWithoutColor
         ? nil
         : RoundedRectangle(cornerRadius: 25, style: .continuous)
-            .fill(offset.width > 0 ? .green : .red)
+            .fill(offset.width == 0 ? .white : offset.width > 0 ? .green : .red)
     }
 
     var body: some View {
@@ -82,7 +82,10 @@ struct CardView: View {
                 .onEnded { _ in
                     if isFullyRemoved {
                         feedback.notificationOccurred(isAnsweredCorrectly ? .success : .error)
-                        onRemoved?()
+                        if isAnsweredCorrectly == false {
+                            offset = .zero
+                        }
+                        onAnsweredCorrectly?(isAnsweredCorrectly)
                     } else {
                         offset = .zero
                     }
@@ -99,7 +102,7 @@ struct CardView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: Card.example) {
+        CardView(card: Card.example) { answeredCorrectly in
 
         }.previewInterfaceOrientation(.landscapeLeft)
     }

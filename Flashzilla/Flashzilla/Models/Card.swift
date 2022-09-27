@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct Card {
+struct Card: Identifiable {
+    var id: String {
+        prompt + answer
+    }
     let prompt: String
     let answer: String 
 }
