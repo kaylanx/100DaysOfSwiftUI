@@ -10,7 +10,7 @@ import SwiftUI
 struct EditCards: View {
 
     @Environment(\.dismiss) private var dismiss
-    @State private var cards = [Card]()
+    @StateObject private var viewModel = CardViewModel()
     @State private var newPrompt = ""
     @State private var newAnswer = ""
 
@@ -24,7 +24,7 @@ struct EditCards: View {
                 }
 
                 Section {
-                    ForEach(cards, id: \.self) { card in
+                    ForEach(viewModel.cards, id: \.self) { card in
                         VStack(alignment: .leading) {
                             Text(card.prompt)
                                 .font(.headline)
@@ -32,7 +32,9 @@ struct EditCards: View {
                                 .foregroundColor(.secondary)
                         }
                     }
-                    .onDelete(perform: removeCards)
+                    .onDelete { offsets in
+                        viewModel.removeCards(at: offsets)
+                    }
                 }
             }
             .navigationTitle("Edit Cards")
@@ -40,13 +42,10 @@ struct EditCards: View {
                 Button("Done", action: done)
             }
             .listStyle(.grouped)
-            .onAppear(perform: loadData)
+            .task {
+                viewModel.loadData()
+            }
         }
-    }
-
-    private func removeCards(at offsets: IndexSet) {
-        cards.remove(atOffsets: offsets)
-        saveData()
     }
 
     private func done() {
@@ -59,24 +58,9 @@ struct EditCards: View {
         guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
 
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
-        cards.insert(card, at: 0)
-        saveData()
+        viewModel.addCard(card: card)
         newPrompt = ""
         newAnswer = ""
-    }
-
-    private func loadData() {
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
-        }
-    }
-
-    private func saveData() {
-        if let data = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(data, forKey: "Cards")
-        }
     }
 }
 

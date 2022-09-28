@@ -21,8 +21,10 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var isShowingEditScreen = false
     @State private var isActive = true
-    @State private var cards = [Card]()
     @State private var timeRemaining = 100
+
+    @StateObject private var viewModel = CardViewModel()
+
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     private var accessibilityFeaturesEnabled: Bool {
@@ -67,7 +69,7 @@ struct ContentView: View {
                     .clipShape(Capsule())
 
                 ZStack {
-                    ForEach(cards) { card in
+                    ForEach(viewModel.cards) { card in
                         CardView(card: card) { answeredCorrectly in
                             if answeredCorrectly {
                                 answerCorrect(forCard: card)
@@ -75,13 +77,13 @@ struct ContentView: View {
                                 answerIncorrect(forCard: card)
                             }
                         }
-                        .stacked(at: card, in: cards)
+                        .stacked(at: card, in: viewModel.cards)
                         .allowsHitTesting(isTop(card: card))
                         .accessibilityHidden(!isTop(card: card))
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
-                if cards.isEmpty || timeRemaining == 0 {
+                if viewModel.cards.isEmpty || timeRemaining == 0 {
                     Button("Start Again", action: resetCards)
                         .padding()
                         .background(.white)
@@ -117,7 +119,7 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                if cards.isEmpty == false {
+                if viewModel.cards.isEmpty == false {
                     isActive = true
                 }
             } else {
@@ -166,7 +168,7 @@ struct ContentView: View {
     private func answerCorrect(forCard card: Card) {
         withAnimation {
             remove(card: card)
-            if cards.isEmpty {
+            if viewModel.cards.isEmpty {
                 isActive = false
             }
         }
@@ -179,34 +181,26 @@ struct ContentView: View {
         }
     }
 
-    private func loadData() {
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
-        }
-    }
-
     private func isTop(card: Card) -> Bool {
         topCard() == card
     }
 
     private func topCard() -> Card {
-        cards.last!
+        viewModel.cards.last!
     }
 
     private func remove(card: Card) {
-        cards.removeAll { $0 == card }
+        viewModel.cards.removeAll { $0 == card }
     }
 
     private func reAdd(card: Card) {
-        cards.insert(card, at: 0)
+        viewModel.cards.insert(card, at: 0)
     }
 
     private func resetCards() {
         timeRemaining = 100
         isActive = true
-        loadData()
+        viewModel.loadData()
     }
 }
 

@@ -22,6 +22,7 @@
 		583D889528DCF62C00C31AB7 /* Card+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889428DCF62C00C31AB7 /* Card+Previews.swift */; };
 		583D889A28DCF72C00C31AB7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889928DCF72C00C31AB7 /* CardView.swift */; };
 		583D889D28E253E400C31AB7 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889C28E253E400C31AB7 /* EditCards.swift */; };
+		583D88A028E4DE2C00C31AB7 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889F28E4DE2C00C31AB7 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		583D889428DCF62C00C31AB7 /* Card+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card+Previews.swift"; sourceTree = "<group>"; };
 		583D889928DCF72C00C31AB7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		583D889C28E253E400C31AB7 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
+		583D889F28E4DE2C00C31AB7 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		583D886E28DA446D00C31AB7 /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
+				583D889E28E4DE1A00C31AB7 /* ViewModel */,
 				583D889B28DCFA0400C31AB7 /* ViewModifiers */,
 				583D889828DCF71D00C31AB7 /* Views */,
 				583D889628DCF68100C31AB7 /* Models */,
@@ -188,6 +191,14 @@
 			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
+		583D889E28E4DE1A00C31AB7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				583D889F28E4DE2C00C31AB7 /* CardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,6 +275,7 @@
 				583D889D28E253E400C31AB7 /* EditCards.swift in Sources */,
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */,
+				583D88A028E4DE2C00C31AB7 /* CardViewModel.swift in Sources */,
 				583D889128DCF4EF00C31AB7 /* LearningContentView.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,
