@@ -13,7 +13,7 @@ class CardViewModel: ObservableObject {
     private var cardRepository: CardRepository
 
     init(
-        cardRepository: CardRepository = UserDefaultsCardRepository()
+        cardRepository: CardRepository = JsonFileCardRepository()
     ) {
         self.cardRepository = cardRepository
     }
