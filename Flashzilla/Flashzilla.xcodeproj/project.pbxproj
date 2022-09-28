@@ -23,6 +23,8 @@
 		583D889A28DCF72C00C31AB7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889928DCF72C00C31AB7 /* CardView.swift */; };
 		583D889D28E253E400C31AB7 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889C28E253E400C31AB7 /* EditCards.swift */; };
 		583D88A028E4DE2C00C31AB7 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D889F28E4DE2C00C31AB7 /* CardViewModel.swift */; };
+		583D88A328E4E61600C31AB7 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88A228E4E61600C31AB7 /* CardRepository.swift */; };
+		583D88A528E4E62D00C31AB7 /* UserDefaultsCardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88A428E4E62D00C31AB7 /* UserDefaultsCardRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		583D889928DCF72C00C31AB7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		583D889C28E253E400C31AB7 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 		583D889F28E4DE2C00C31AB7 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		583D88A228E4E61600C31AB7 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
+		583D88A428E4E62D00C31AB7 /* UserDefaultsCardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsCardRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		583D886E28DA446D00C31AB7 /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
+				583D88A128E4E60100C31AB7 /* Repository */,
 				583D889E28E4DE1A00C31AB7 /* ViewModel */,
 				583D889B28DCFA0400C31AB7 /* ViewModifiers */,
 				583D889828DCF71D00C31AB7 /* Views */,
@@ -199,6 +204,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		583D88A128E4E60100C31AB7 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				583D88A228E4E61600C31AB7 /* CardRepository.swift */,
+				583D88A428E4E62D00C31AB7 /* UserDefaultsCardRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +290,8 @@
 				583D888028DA46AE00C31AB7 /* GesturesView.swift in Sources */,
 				583D888928DBA5F500C31AB7 /* CombineLearning.swift in Sources */,
 				583D88A028E4DE2C00C31AB7 /* CardViewModel.swift in Sources */,
+				583D88A328E4E61600C31AB7 /* CardRepository.swift in Sources */,
+				583D88A528E4E62D00C31AB7 /* UserDefaultsCardRepository.swift in Sources */,
 				583D889128DCF4EF00C31AB7 /* LearningContentView.swift in Sources */,
 				583D887228DA446D00C31AB7 /* ContentView.swift in Sources */,
 				583D887028DA446D00C31AB7 /* FlashzillaApp.swift in Sources */,

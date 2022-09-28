@@ -10,33 +10,46 @@ import Foundation
 class CardViewModel: ObservableObject {
 
     @Published var cards = [Card]()
+    private var cardRepository: CardRepository
+
+    init(
+        cardRepository: CardRepository = UserDefaultsCardRepository()
+    ) {
+        self.cardRepository = cardRepository
+    }
 
     @MainActor
     func addCard(card: Card) {
         Task {
             cards.insert(card, at: 0)
-            saveData()
+            saveCards()
         }
     }
 
     func removeCards(at offsets: IndexSet) {
         cards.remove(atOffsets: offsets)
-        saveData()
+        saveCards()
     }
 
     func loadData() {
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                DispatchQueue.main.async {
-                    self.cards = decoded
-                }
+        Task { @MainActor in
+            do {
+                self.cards = try await cardRepository.loadCards()
+            } catch {
+                // Error handling out of scope
+                print(error)
             }
         }
     }
 
-    func saveData() {
-        if let data = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(data, forKey: "Cards")
+    func saveCards() {
+        Task {
+            do {
+                try await cardRepository.saveCards(cards)
+            } catch {
+                // Error handling out of scope
+                print(error)
+            }
         }
     }
 }
