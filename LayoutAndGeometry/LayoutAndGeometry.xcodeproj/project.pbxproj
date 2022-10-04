@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5821C60928ECC63600C0BE85 /* AbsolutePositioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */; };
 		583D88B728E6264C00C31AB7 /* LayoutAndGeometryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88B628E6264C00C31AB7 /* LayoutAndGeometryApp.swift */; };
 		583D88B928E6264C00C31AB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88B828E6264C00C31AB7 /* ContentView.swift */; };
 		583D88BB28E6265500C31AB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583D88BA28E6265500C31AB7 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsolutePositioning.swift; sourceTree = "<group>"; };
 		583D88B328E6264C00C31AB7 /* LayoutAndGeometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutAndGeometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583D88B628E6264C00C31AB7 /* LayoutAndGeometryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAndGeometryApp.swift; sourceTree = "<group>"; };
 		583D88B828E6264C00C31AB7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				583D88C528E6389100C31AB7 /* Alignments.swift */,
 				583D88C728E6403000C31AB7 /* AlignmentGuides.swift */,
 				583D88C928E6406800C31AB7 /* CustomAlignmentGuides.swift */,
+				5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */,
 			);
 			path = Learning;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				583D88CA28E6406800C31AB7 /* CustomAlignmentGuides.swift in Sources */,
 				583D88B928E6264C00C31AB7 /* ContentView.swift in Sources */,
 				583D88B728E6264C00C31AB7 /* LayoutAndGeometryApp.swift in Sources */,
+				5821C60928ECC63600C0BE85 /* AbsolutePositioning.swift in Sources */,
 				583D88C628E6389100C31AB7 /* Alignments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
