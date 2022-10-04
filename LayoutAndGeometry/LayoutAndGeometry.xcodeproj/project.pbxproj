@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5821C60928ECC63600C0BE85 /* AbsolutePositioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */; };
 		5821C60B28ECCBE500C0BE85 /* GeometryReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821C60A28ECCBE500C0BE85 /* GeometryReaderView.swift */; };
+		5821C60D28ECD0D300C0BE85 /* ScrollViewWithGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821C60C28ECD0D300C0BE85 /* ScrollViewWithGeometryReader.swift */; };
 		583D88B728E6264C00C31AB7 /* LayoutAndGeometryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88B628E6264C00C31AB7 /* LayoutAndGeometryApp.swift */; };
 		583D88B928E6264C00C31AB7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D88B828E6264C00C31AB7 /* ContentView.swift */; };
 		583D88BB28E6265500C31AB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 583D88BA28E6265500C31AB7 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbsolutePositioning.swift; sourceTree = "<group>"; };
 		5821C60A28ECCBE500C0BE85 /* GeometryReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderView.swift; sourceTree = "<group>"; };
+		5821C60C28ECD0D300C0BE85 /* ScrollViewWithGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewWithGeometryReader.swift; sourceTree = "<group>"; };
 		583D88B328E6264C00C31AB7 /* LayoutAndGeometry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LayoutAndGeometry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		583D88B628E6264C00C31AB7 /* LayoutAndGeometryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAndGeometryApp.swift; sourceTree = "<group>"; };
 		583D88B828E6264C00C31AB7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				583D88C928E6406800C31AB7 /* CustomAlignmentGuides.swift */,
 				5821C60828ECC63600C0BE85 /* AbsolutePositioning.swift */,
 				5821C60A28ECCBE500C0BE85 /* GeometryReaderView.swift */,
+				5821C60C28ECD0D300C0BE85 /* ScrollViewWithGeometryReader.swift */,
 			);
 			path = Learning;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 			files = (
 				583D88C828E6403000C31AB7 /* AlignmentGuides.swift in Sources */,
 				583D88CA28E6406800C31AB7 /* CustomAlignmentGuides.swift in Sources */,
+				5821C60D28ECD0D300C0BE85 /* ScrollViewWithGeometryReader.swift in Sources */,
 				5821C60B28ECCBE500C0BE85 /* GeometryReaderView.swift in Sources */,
 				583D88B928E6264C00C31AB7 /* ContentView.swift in Sources */,
 				583D88B728E6264C00C31AB7 /* LayoutAndGeometryApp.swift in Sources */,
