@@ -12,7 +12,8 @@ struct ContentView: View {
 //        Alignments()
 //        AlignmentGuides()
 //        CustomAlignmentGuides()
-        AbsolutePositioning()
+//        AbsolutePositioning()
+        GeometryReaderView()
     }
 }
 
