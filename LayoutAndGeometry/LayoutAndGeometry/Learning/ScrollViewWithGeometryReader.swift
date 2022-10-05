@@ -49,11 +49,17 @@ struct BasicScrollViewWithGeometryReader: View {
             ScrollView {
                 ForEach(0..<50) { index in
                     GeometryReader { geo in
-                        Text("Row #\(index) \(abs(geo.size.height - geo.frame(in: .global).minY / 3.5))")
+                        Text("Row #\(index)")
                             .font(.title)
                             .frame(maxWidth: .infinity)
                             .frame(height: max(50, abs(geo.size.height - geo.frame(in: .global).minY / 3.5)))
-                            .background(colors[index % colors.count])
+                            .background(
+                                Color(
+                                    hue: min(1, (geo.frame(in: .global).minY * 0.0008)),
+                                    saturation: 1,
+                                    brightness: 1
+                                )
+                            )
                             .rotation3DEffect(
                                 .degrees(
                                     geo.frame(in: .global).minY - fullView.size.height / 2

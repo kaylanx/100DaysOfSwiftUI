@@ -14,7 +14,8 @@ struct ContentView: View {
 //        CustomAlignmentGuides()
 //        AbsolutePositioning()
 //        GeometryReaderView()
-        ScrollViewWithGeometryReader()
+//        ScrollViewWithGeometryReader()
+        BasicScrollViewWithGeometryReader()
     }
 }
 
