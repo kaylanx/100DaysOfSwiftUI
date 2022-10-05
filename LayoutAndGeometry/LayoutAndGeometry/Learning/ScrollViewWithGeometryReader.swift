@@ -59,6 +59,7 @@ struct BasicScrollViewWithGeometryReader: View {
                                 ) / 5,
                                 axis: (x: 0, y: 1, z: 0)
                             )
+                            .opacity(geo.frame(in: .global).minY / 200)
                     }
                     .frame(height: 40)
                 }
