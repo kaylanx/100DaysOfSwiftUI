@@ -27,6 +27,13 @@ struct RollDiceView: View {
         }.joined(separator: ", ")
     }
 
+    private var diceTotal: Int {
+        let totalRolled = dice.reduce(into: Int()) { partialResult, di in
+            partialResult += di.dice.rawValue
+        }
+        return totalRolled
+    }
+
 
     var body: some View {
         NavigationView {
@@ -43,6 +50,7 @@ struct RollDiceView: View {
                             DiceView(dice: di.dice)
                         }
                     }
+                    rollTotal
                     Spacer()
                     Spacer()
                     Spacer()
@@ -96,6 +104,12 @@ struct RollDiceView: View {
         }
     }
 
+    private var rollTotal: some View {
+        Text("\(diceTotal)")
+            .font(.title)
+            .foregroundColor(.diceSecondary)
+    }
+
     private var settingsButton: some View {
         Button {
             isShowingSettings.toggle()
@@ -106,11 +120,7 @@ struct RollDiceView: View {
 
     private var rollDiceButton: some View {
         Button("Roll dice") {
-            let totalRolled = dice.reduce(into: Int()) { partialResult, di in
-                partialResult += di.dice.rawValue
-            }
-
-            previouslyRolled.append(totalRolled)
+            previouslyRolled.append(diceTotal)
             resetDice(numberOfDice: numberOfDice)
         }
         .padding()
