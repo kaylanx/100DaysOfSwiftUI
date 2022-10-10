@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RollDiceView: View {
     
-    @State private var dice: [DiceContainer] = [.init(dice: SixSidedDice.allCases.randomElement()!)]
+    @State private var dice: [DiceContainer] = [.init(dice: SixSidedDice.one)]
     @State private var previouslyRolled: [Int] = []
     @State private var isShowingSettings = false
     @State private var numberOfDice = 1
+    @State private var diceType: DiceType = .sixSided
 
     private var columns: [GridItem] {
         Array(
@@ -28,12 +29,11 @@ struct RollDiceView: View {
     }
 
     private var diceTotal: Int {
-        let totalRolled = dice.reduce(into: Int()) { partialResult, di in
-            partialResult += di.dice.rawValue
+        let totalRolled = dice.reduce(into: Int()) { partialResult, die in
+            partialResult += die.dice.rawValue
         }
         return totalRolled
     }
-
 
     var body: some View {
         NavigationView {
@@ -46,8 +46,8 @@ struct RollDiceView: View {
                         columns: columns,
                         spacing: 20
                     ) {
-                        ForEach(dice) { di in
-                            DiceView(dice: di.dice)
+                        ForEach(dice) { die in
+                            DiceView(dice: die.dice)
                         }
                     }
                     rollTotal
@@ -66,10 +66,12 @@ struct RollDiceView: View {
             .sheet(isPresented: $isShowingSettings) {
                 SettingsView(
                     isPresented: $isShowingSettings,
-                    numberOfDice: $numberOfDice
+                    numberOfDice: $numberOfDice,
+                    diceType: $diceType
                 )
             }
             .onChange(of: numberOfDice, perform: resetDice(numberOfDice:))
+            .onChange(of: diceType) { _ in resetDice(numberOfDice:numberOfDice) }
         }
         .tint(.diceSecondary)
     }
@@ -132,8 +134,12 @@ struct RollDiceView: View {
     private func resetDice(numberOfDice: Int) {
         dice = []
         for _ in 0..<numberOfDice {
-            dice.append(.init(dice: SixSidedDice.allCases.randomElement()!))
+            dice.append(.init(dice: randomDiceRoll()))
         }
+    }
+
+    private func randomDiceRoll() -> any Dice {
+        diceType.roll()
     }
 }
 

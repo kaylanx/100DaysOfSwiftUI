@@ -20,6 +20,20 @@ struct DiceContainer: Identifiable, Hashable {
     }
 }
 
+enum DiceType: String, CaseIterable, Equatable {
+    case sixSided = "Six Sided"
+    case fourSided = "Four Sided"
+
+    func roll() -> Dice {
+        switch self {
+            case .sixSided:
+                return SixSidedDice.allCases.randomElement()!
+            case .fourSided:
+                return FourSidedDice.allCases.randomElement()!
+        }
+    }
+}
+
 protocol Dice {
     var imageName: String { get }
     var rawValue: Int { get }
@@ -35,5 +49,16 @@ enum SixSidedDice: Int, Dice, CaseIterable {
 
     var imageName: String {
         "SixSidedDice\(self.rawValue)"
+    }
+}
+
+enum FourSidedDice: Int, Dice, CaseIterable {
+    case one = 1
+    case two = 2
+    case three = 3
+    case four = 4
+
+    var imageName: String {
+        "FourSidedDice\(self.rawValue)"
     }
 }
