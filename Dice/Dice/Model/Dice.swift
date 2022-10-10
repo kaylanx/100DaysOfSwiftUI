@@ -7,6 +7,19 @@
 
 import Foundation
 
+struct DiceContainer: Identifiable, Hashable {
+    let dice: any Dice
+    let id = UUID()
+
+    static func == (lhs: DiceContainer, rhs: DiceContainer) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        id.hash(into: &hasher)
+    }
+}
+
 protocol Dice {
     var imageName: String { get }
     var rawValue: Int { get }
