@@ -14,50 +14,24 @@ struct SettingsView: View {
     @Binding var diceType: DiceType
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.dicePrimary
-                    .ignoresSafeArea()
-
-                Form {
-                    Section("Settings") {
-                        Picker("How many dice?", selection: $numberOfDice) {
-                            ForEach(1..<5, id: \.self) {
-                                Text("\($0)")
-                            }
-                        }
-
-                        Picker("Type of dice", selection: $diceType) {
-                            ForEach(DiceType.allCases, id: \.self) {
-                                Text("\($0.rawValue)")
-                            }
+        SheetView(isPresented: $isPresented) {
+            Form {
+                Section("Settings") {
+                    Picker("How many dice?", selection: $numberOfDice) {
+                        ForEach(1..<5, id: \.self) {
+                            Text("\($0)")
                         }
                     }
-                }
-                .scrollContentBackground(.hidden)
-            }
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        LogoView()
-                    }
-                    .padding()
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    VStack {
-                        Button {
-                            isPresented.toggle()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.diceSecondary)
+
+                    Picker("Type of dice", selection: $diceType) {
+                        ForEach(DiceType.allCases, id: \.self) {
+                            Text("\($0.rawValue)")
                         }
                     }
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .tint(.dicePrimary)
+            .scrollContentBackground(.hidden)
         }
-        .foregroundColor(.diceSecondary)
     }
 }
 

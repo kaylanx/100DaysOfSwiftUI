@@ -32,6 +32,13 @@ enum DiceType: String, CaseIterable, Equatable {
                 return FourSidedDice.allCases.randomElement()!
         }
     }
+
+    var numberOfSides: Int {
+        switch self {
+            case .sixSided: return 6
+            case .fourSided: return 4
+        }
+    }
 }
 
 protocol Dice {

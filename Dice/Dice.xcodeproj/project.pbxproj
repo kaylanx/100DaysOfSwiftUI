@@ -17,6 +17,10 @@
 		5812C60128F2F03A00AB3325 /* RollDiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60028F2F03A00AB3325 /* RollDiceView.swift */; };
 		5812C60328F2F70100AB3325 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60228F2F70100AB3325 /* SettingsView.swift */; };
 		5812C60528F2F9C900AB3325 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60428F2F9C900AB3325 /* LogoView.swift */; };
+		5812C60728F4C84B00AB3325 /* PreviousRollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60628F4C84B00AB3325 /* PreviousRollsView.swift */; };
+		5812C60A28F5F9B500AB3325 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60928F5F9B500AB3325 /* DataController.swift */; };
+		5812C60D28F5FACC00AB3325 /* DiceRolls.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60B28F5FACB00AB3325 /* DiceRolls.xcdatamodeld */; };
+		5812C60F28F6101100AB3325 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60E28F6101100AB3325 /* SheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		5812C60028F2F03A00AB3325 /* RollDiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollDiceView.swift; sourceTree = "<group>"; };
 		5812C60228F2F70100AB3325 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5812C60428F2F9C900AB3325 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		5812C60628F4C84B00AB3325 /* PreviousRollsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousRollsView.swift; sourceTree = "<group>"; };
+		5812C60928F5F9B500AB3325 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		5812C60C28F5FACC00AB3325 /* DiceRolls.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiceRolls.xcdatamodel; sourceTree = "<group>"; };
+		5812C60E28F6101100AB3325 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 		5812C5CC28EF702300AB3325 /* Dice */ = {
 			isa = PBXGroup;
 			children = (
+				5812C60828F5F99E00AB3325 /* Persistance */,
 				5812C5FD28EF852800AB3325 /* Theme */,
 				5812C5FA28EF7DB700AB3325 /* Model */,
 				5812C5F728EF78D700AB3325 /* View */,
@@ -124,6 +133,8 @@
 				5812C60028F2F03A00AB3325 /* RollDiceView.swift */,
 				5812C60228F2F70100AB3325 /* SettingsView.swift */,
 				5812C60428F2F9C900AB3325 /* LogoView.swift */,
+				5812C60628F4C84B00AB3325 /* PreviousRollsView.swift */,
+				5812C60E28F6101100AB3325 /* SheetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -132,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5812C5FB28EF7DCA00AB3325 /* Dice.swift */,
+				5812C60B28F5FACB00AB3325 /* DiceRolls.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +154,14 @@
 				5812C5FE28EF853C00AB3325 /* Color+Theme.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		5812C60828F5F99E00AB3325 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				5812C60928F5F9B500AB3325 /* DataController.swift */,
+			);
+			path = Persistance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,14 +294,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5812C60728F4C84B00AB3325 /* PreviousRollsView.swift in Sources */,
 				5812C60328F2F70100AB3325 /* SettingsView.swift in Sources */,
 				5812C60128F2F03A00AB3325 /* RollDiceView.swift in Sources */,
 				5812C5FF28EF853C00AB3325 /* Color+Theme.swift in Sources */,
 				5812C5D028EF702300AB3325 /* ContentView.swift in Sources */,
+				5812C60A28F5F9B500AB3325 /* DataController.swift in Sources */,
 				5812C5F928EF78EE00AB3325 /* DiceView.swift in Sources */,
 				5812C60528F2F9C900AB3325 /* LogoView.swift in Sources */,
 				5812C5FC28EF7DCA00AB3325 /* Dice.swift in Sources */,
 				5812C5CE28EF702300AB3325 /* DiceApp.swift in Sources */,
+				5812C60F28F6101100AB3325 /* SheetView.swift in Sources */,
+				5812C60D28F5FACC00AB3325 /* DiceRolls.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +627,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5812C60B28F5FACB00AB3325 /* DiceRolls.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5812C60C28F5FACC00AB3325 /* DiceRolls.xcdatamodel */,
+			);
+			currentVersion = 5812C60C28F5FACC00AB3325 /* DiceRolls.xcdatamodel */;
+			path = DiceRolls.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5812C5C228EF702300AB3325 /* Project object */;
 }

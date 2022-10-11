@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct RollDiceView: View {
-    
+
+
+    @Environment(\.managedObjectContext) private var managedObjectContext
+
     @State private var dice: [DiceContainer] = [.init(dice: SixSidedDice.one)]
-    @State private var previouslyRolled: [Int] = []
     @State private var isShowingSettings = false
+    @State private var isShowingPreviousRolls = false
     @State private var numberOfDice = 1
     @State private var diceType: DiceType = .sixSided
 
@@ -20,12 +23,6 @@ struct RollDiceView: View {
             repeating: GridItem(.flexible(minimum: 30)),
             count: dice.count > 3 ? 2 : dice.count
         )
-    }
-
-    private var previouslyRolledDisplay: String {
-        previouslyRolled.map {
-            "\($0)"
-        }.joined(separator: ", ")
     }
 
     private var diceTotal: Int {
@@ -56,7 +53,7 @@ struct RollDiceView: View {
                     Spacer()
                     Spacer()
                     VStack {
-                        previousRolls
+                        previousRollsButton
                         rollDiceButton
                     }
                 }
@@ -69,6 +66,9 @@ struct RollDiceView: View {
                     numberOfDice: $numberOfDice,
                     diceType: $diceType
                 )
+            }
+            .sheet(isPresented: $isShowingPreviousRolls){
+                PreviousRollsView(isPresented: $isShowingPreviousRolls)
             }
             .onChange(of: numberOfDice, perform: resetDice(numberOfDice:))
             .onChange(of: diceType) { _ in resetDice(numberOfDice:numberOfDice) }
@@ -93,19 +93,6 @@ struct RollDiceView: View {
         .ignoresSafeArea()
     }
 
-    @ViewBuilder
-    private var previousRolls: some View {
-        if previouslyRolled.count > 0 {
-            VStack {
-                Text("Previously rolled:")
-                    .font(.title)
-                Text(previouslyRolledDisplay)
-            }
-            .padding(.top)
-            .foregroundColor(.dicePrimary)
-        }
-    }
-
     private var rollTotal: some View {
         Text("\(diceTotal)")
             .font(.title)
@@ -122,13 +109,21 @@ struct RollDiceView: View {
 
     private var rollDiceButton: some View {
         Button("Roll dice") {
-            previouslyRolled.append(diceTotal)
+            saveRoll()
             resetDice(numberOfDice: numberOfDice)
         }
         .padding()
         .background(Color.dicePrimary)
         .foregroundColor(.diceSecondary)
         .clipShape(Capsule())
+    }
+
+    private var previousRollsButton: some View {
+        Button("See previous rolls") {
+            isShowingPreviousRolls.toggle()
+        }
+        .padding()
+        .foregroundColor(.dicePrimary)
     }
 
     private func resetDice(numberOfDice: Int) {
@@ -140,6 +135,17 @@ struct RollDiceView: View {
 
     private func randomDiceRoll() -> any Dice {
         diceType.roll()
+    }
+
+    private func saveRoll() {
+        let diceRoll = DiceRoll(context: managedObjectContext)
+        diceRoll.id = UUID()
+        diceRoll.numberOfDice = Int16(numberOfDice)
+        diceRoll.numberOfSides = Int16(diceType.numberOfSides)
+        diceRoll.totalRolled = Int16(diceTotal)
+        diceRoll.dateOfRoll = Date()
+
+        try? managedObjectContext.save()
     }
 }
 
