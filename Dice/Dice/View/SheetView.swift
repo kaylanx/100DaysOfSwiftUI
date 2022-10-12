@@ -17,14 +17,15 @@ struct SheetView<Content: View>: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.dicePrimary
+                Color.diceSecondary
                     .ignoresSafeArea()
                 content
             }
             .toolbar {
                 ToolbarItem(placement: .principal) {
                     VStack {
-                        LogoView()
+                        LogoView(alignment: .horizontal)
+                            .foregroundColor(.dicePrimary)
                     }
                     .padding()
                 }
@@ -34,15 +35,15 @@ struct SheetView<Content: View>: View {
                             isPresented.toggle()
                         } label: {
                             Image(systemName: "xmark")
-                                .foregroundColor(.diceSecondary)
+                                .foregroundColor(.dicePrimary)
                         }
                     }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .tint(.dicePrimary)
+            .tint(.diceSecondary)
         }
-        .foregroundColor(.diceSecondary)
+        .foregroundColor(.dicePrimary)
     }
 }
 

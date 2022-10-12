@@ -9,8 +9,12 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "DiceRolls")
+    private let container = NSPersistentContainer(name: "DiceRolls")
 
+    var viewContext: NSManagedObjectContext {
+        container.viewContext
+    }
+    
     init() {
         container.loadPersistentStores { description, error in
             if let error = error {

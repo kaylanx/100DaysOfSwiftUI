@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RollDiceView: View {
 
-
     @Environment(\.managedObjectContext) private var managedObjectContext
 
     @State private var dice: [DiceContainer] = [.init(dice: SixSidedDice.one)]
@@ -78,6 +77,7 @@ struct RollDiceView: View {
 
     private var header: some View {
         LogoView()
+            .foregroundColor(.diceSecondary)
     }
 
     private var background: some View {
@@ -110,6 +110,9 @@ struct RollDiceView: View {
     private var rollDiceButton: some View {
         Button("Roll dice") {
             saveRoll()
+
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
             resetDice(numberOfDice: numberOfDice)
         }
         .padding()

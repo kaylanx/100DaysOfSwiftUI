@@ -21,6 +21,7 @@
 		5812C60A28F5F9B500AB3325 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60928F5F9B500AB3325 /* DataController.swift */; };
 		5812C60D28F5FACC00AB3325 /* DiceRolls.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60B28F5FACB00AB3325 /* DiceRolls.xcdatamodeld */; };
 		5812C60F28F6101100AB3325 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5812C60E28F6101100AB3325 /* SheetView.swift */; };
+		58C070CE28F739E300CE50D6 /* PreviewDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C070CD28F739E300CE50D6 /* PreviewDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		5812C60928F5F9B500AB3325 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		5812C60C28F5FACC00AB3325 /* DiceRolls.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DiceRolls.xcdatamodel; sourceTree = "<group>"; };
 		5812C60E28F6101100AB3325 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		58C070CD28F739E300CE50D6 /* PreviewDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				5812C5D428EF702600AB3325 /* Preview Assets.xcassets */,
+				58C070CD28F739E300CE50D6 /* PreviewDataController.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				5812C60128F2F03A00AB3325 /* RollDiceView.swift in Sources */,
 				5812C5FF28EF853C00AB3325 /* Color+Theme.swift in Sources */,
 				5812C5D028EF702300AB3325 /* ContentView.swift in Sources */,
+				58C070CE28F739E300CE50D6 /* PreviewDataController.swift in Sources */,
 				5812C60A28F5F9B500AB3325 /* DataController.swift in Sources */,
 				5812C5F928EF78EE00AB3325 /* DiceView.swift in Sources */,
 				5812C60528F2F9C900AB3325 /* LogoView.swift in Sources */,

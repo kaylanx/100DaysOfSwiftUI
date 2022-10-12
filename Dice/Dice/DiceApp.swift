@@ -15,7 +15,7 @@ struct DiceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environment(\.managedObjectContext, dataController.viewContext)
         }
     }
 }

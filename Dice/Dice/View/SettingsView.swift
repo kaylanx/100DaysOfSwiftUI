@@ -17,18 +17,27 @@ struct SettingsView: View {
         SheetView(isPresented: $isPresented) {
             Form {
                 Section("Settings") {
-                    Picker("How many dice?", selection: $numberOfDice) {
+                    Picker(selection: $numberOfDice) {
                         ForEach(1..<5, id: \.self) {
                             Text("\($0)")
                         }
+                    } label: {
+                        Text("How many dice?")
                     }
+                    .colorMultiply(.diceSecondary)
+                    .listRowBackground(Color.dicePrimary)
 
-                    Picker("Type of dice", selection: $diceType) {
+                    Picker(selection: $diceType) {
                         ForEach(DiceType.allCases, id: \.self) {
                             Text("\($0.rawValue)")
                         }
+                    } label: {
+                        Text("Type of dice")
                     }
+                    .colorMultiply(.diceSecondary)
+                    .listRowBackground(Color.dicePrimary)
                 }
+                .foregroundColor(.dicePrimary)
             }
             .scrollContentBackground(.hidden)
         }
@@ -42,5 +51,15 @@ struct SettingsView_Previews: PreviewProvider {
             numberOfDice: .constant(4),
             diceType: .constant(.sixSided)
         )
+        .preferredColorScheme(.light)
+        .previewDisplayName("Light")
+
+        SettingsView(
+            isPresented: .constant(true),
+            numberOfDice: .constant(4),
+            diceType: .constant(.sixSided)
+        )
+        .preferredColorScheme(.dark)
+        .previewDisplayName("Dark")
     }
 }
