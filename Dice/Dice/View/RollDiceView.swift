@@ -5,11 +5,21 @@
 //  Created by Andy Kayley on 09/10/2022.
 //
 
+import Combine
 import SwiftUI
+import UIKit
 
 struct RollDiceView: View {
 
     @Environment(\.managedObjectContext) private var managedObjectContext
+
+    @State private var degrees = 0.0
+
+    private var timer = Timer.publish(every: 0.3, on: .main, in: .common).autoconnect()
+    private let generator = UIImpactFeedbackGenerator(style: .rigid)
+
+    @State private var isRollingDice = false
+    @State private var count = 0
 
     @State private var dice: [DiceContainer] = [.init(dice: SixSidedDice.one)]
     @State private var isShowingSettings = false
@@ -44,6 +54,10 @@ struct RollDiceView: View {
                     ) {
                         ForEach(dice) { die in
                             DiceView(dice: die.dice)
+                                .rotation3DEffect(
+                                    .degrees(degrees),
+                                    axis: (x: 0, y: 1, z: 0)
+                                )
                         }
                     }
                     rollTotal
@@ -110,15 +124,24 @@ struct RollDiceView: View {
     private var rollDiceButton: some View {
         Button("Roll dice") {
             saveRoll()
-
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-            resetDice(numberOfDice: numberOfDice)
+            count = 0
+            isRollingDice = true
         }
         .padding()
         .background(Color.dicePrimary)
         .foregroundColor(.diceSecondary)
         .clipShape(Capsule())
+        .onReceive(timer) { time in
+            if isRollingDice {
+                if count < 5 {
+                    generator.impactOccurred()
+                    updateDice()
+                    count += 1
+                } else {
+                    isRollingDice = false
+                }
+            }
+        }
     }
 
     private var previousRollsButton: some View {
@@ -133,6 +156,15 @@ struct RollDiceView: View {
         dice = []
         for _ in 0..<numberOfDice {
             dice.append(.init(dice: randomDiceRoll()))
+        }
+    }
+
+    private func updateDice() {
+        for i in 0..<numberOfDice {
+            dice[i] = .init(dice: randomDiceRoll())
+            withAnimation {
+                self.degrees += 360.0 / Double(numberOfDice)
+            }
         }
     }
 
