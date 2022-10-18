@@ -41,14 +41,10 @@ protocol Side {
     var perspective: CGFloat { get }
     var anchor: UnitPoint { get }
     func next()
+    func previous()
 }
 
-class FrontSide: Side {
-    var rotationDegree: Double = 0
-    var rotationOffset: CGFloat {
-        offsets[index]
-    }
-
+extension Side {
     var yAxis: CGFloat {
         -1.0
     }
@@ -59,6 +55,18 @@ class FrontSide: Side {
 
     var anchor: UnitPoint {
         .trailing
+    }
+}
+
+class DiceSide: Side {
+    var rotationDegree: Double
+
+    init(initialRotationDegree degree: Double) {
+        self.rotationDegree = degree
+    }
+
+    var rotationOffset: CGFloat {
+        offsets[index]
     }
 
     private var index = 0
@@ -76,6 +84,15 @@ class FrontSide: Side {
             index += 1
         }
         rotationDegree += 90
+    }
+
+    func previous() {
+        if index - 1 < 0 {
+            index = offsets.count - 1
+        } else {
+            index -= 1
+        }
+        rotationDegree -= 90
     }
 }
 
@@ -103,6 +120,11 @@ class RotationData: ObservableObject {
         set(side: side)
     }
 
+    func rotateRight() {
+        side.previous()
+        set(side: side)
+    }
+
     func set(side: Side) {
         rotationDegree = side.rotationDegree
         rotationOffset = side.rotationOffset
@@ -116,7 +138,10 @@ class RotationData: ObservableObject {
 struct Dice3DView: View {
 
     @ObservedObject
-    var oneFaceRotationData = RotationData(side: FrontSide())
+    var oneFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0))
+
+    @ObservedObject
+    var fiveFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90))
 
     var body: some View {
         VStack {
@@ -125,28 +150,33 @@ struct Dice3DView: View {
                 HStack {
                     Text("Degree: ")
                         .font(.title2)
-                    TextField("Degree", value: $oneFaceRotationData.rotationDegree, format: .number)
+                    TextField("Degree", value: $fiveFaceRotationData.rotationDegree, format: .number)
                 }
 
-                Stepper("Offset \(oneFaceRotationData.rotationOffset)", value: $oneFaceRotationData.rotationOffset)
-                Stepper("Y Axis \(oneFaceRotationData.yAxis)", value: $oneFaceRotationData.yAxis)
-                Stepper("Perspective \(oneFaceRotationData.perspective)", value: $oneFaceRotationData.perspective)
+                Stepper("Offset \(fiveFaceRotationData.rotationOffset)", value: $fiveFaceRotationData.rotationOffset)
+                Stepper("Y Axis \(fiveFaceRotationData.yAxis)", value: $fiveFaceRotationData.yAxis)
+                Stepper("Perspective \(fiveFaceRotationData.perspective)", value: $fiveFaceRotationData.perspective)
                 HStack {
                     Text("Anchor: ")
                         .font(.title2)
-                    Text("\(oneFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                    Text("\(fiveFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
                 }
             }
 
             ZStack {
+                DiceView(dice: SixSidedDice.five)
+                    .modifier(DiceRotationViewModifier(rotationData: fiveFaceRotationData))
+
                 DiceView(dice: SixSidedDice.one)
                     .modifier(DiceRotationViewModifier(rotationData: oneFaceRotationData))
+
             }
 
             HStack {
                 Button("Rotate Left") {
                     withAnimation() {
                         oneFaceRotationData.rotateLeft()
+                        fiveFaceRotationData.rotateLeft()
                     }
                 }
                 .padding()
@@ -154,9 +184,10 @@ struct Dice3DView: View {
                 .foregroundColor(.diceSecondary)
                 .clipShape(Capsule())
 
-                Button("Reset") {
+                Button("Rotate Right") {
                     withAnimation {
-                        oneFaceRotationData.set(side: FrontSide())
+                        oneFaceRotationData.rotateRight()
+                        fiveFaceRotationData.rotateRight()
                     }
                 }
                 .padding()
