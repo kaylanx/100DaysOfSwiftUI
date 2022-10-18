@@ -40,8 +40,8 @@ protocol Side {
     var yAxis: CGFloat { get }
     var perspective: CGFloat { get }
     var anchor: UnitPoint { get }
-    func next()
-    func previous()
+    @discardableResult func next() -> Side
+    @discardableResult func previous() -> Side
 }
 
 extension Side {
@@ -77,22 +77,24 @@ class DiceSide: Side {
         0
     ]
 
-    func next() {
+    func next() -> Side {
         if index + 1 == offsets.count {
             index = 0
         } else {
             index += 1
         }
         rotationDegree += 90
+        return self
     }
 
-    func previous() {
+    func previous() -> Side {
         if index - 1 < 0 {
             index = offsets.count - 1
         } else {
             index -= 1
         }
         rotationDegree -= 90
+        return self
     }
 }
 
@@ -116,13 +118,11 @@ class RotationData: ObservableObject {
     }
 
     func rotateLeft() {
-        side.next()
-        set(side: side)
+        set(side: side.next())
     }
 
     func rotateRight() {
-        side.previous()
-        set(side: side)
+        set(side: side.previous())
     }
 
     func set(side: Side) {
@@ -141,42 +141,142 @@ struct Dice3DView: View {
     var oneFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0))
 
     @ObservedObject
+    var twoFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90))
+
+    @ObservedObject
     var fiveFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90))
+
+    @ObservedObject
+    var sixFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0).next().next())
+
 
     var body: some View {
         VStack {
 
             Form {
-                HStack {
-                    Text("Degree: ")
-                        .font(.title2)
-                    TextField("Degree", value: $fiveFaceRotationData.rotationDegree, format: .number)
+                Section("One") {
+                    HStack {
+                        Text("Degree: ")
+                            .font(.title2)
+                        TextField("Degree", value: $oneFaceRotationData.rotationDegree, format: .number)
+                    }
+                    Stepper("Offset \(oneFaceRotationData.rotationOffset)", value: $oneFaceRotationData.rotationOffset)
+                    Stepper("Y Axis \(oneFaceRotationData.yAxis)", value: $oneFaceRotationData.yAxis)
+                    Stepper("Perspective \(oneFaceRotationData.perspective)", value: $oneFaceRotationData.perspective)
+                    HStack {
+                        Text("Anchor: ")
+                            .font(.title2)
+                        Text("\(oneFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                    }
                 }
 
-                Stepper("Offset \(fiveFaceRotationData.rotationOffset)", value: $fiveFaceRotationData.rotationOffset)
-                Stepper("Y Axis \(fiveFaceRotationData.yAxis)", value: $fiveFaceRotationData.yAxis)
-                Stepper("Perspective \(fiveFaceRotationData.perspective)", value: $fiveFaceRotationData.perspective)
-                HStack {
-                    Text("Anchor: ")
-                        .font(.title2)
-                    Text("\(fiveFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                Section("two") {
+                    HStack {
+                        Text("Degree: ")
+                            .font(.title2)
+                        TextField("Degree", value: $twoFaceRotationData.rotationDegree, format: .number)
+                    }
+                    Stepper("Offset \(twoFaceRotationData.rotationOffset)", value: $twoFaceRotationData.rotationOffset)
+                    Stepper("Y Axis \(twoFaceRotationData.yAxis)", value: $twoFaceRotationData.yAxis)
+                    Stepper("Perspective \(twoFaceRotationData.perspective)", value: $twoFaceRotationData.perspective)
+                    HStack {
+                        Text("Anchor: ")
+                            .font(.title2)
+                        Text("\(twoFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                    }
                 }
+
+                Section("Five") {
+                    HStack {
+                        Text("Degree: ")
+                            .font(.title2)
+                        TextField("Degree", value: $fiveFaceRotationData.rotationDegree, format: .number)
+                    }
+
+                    Stepper("Offset \(fiveFaceRotationData.rotationOffset)", value: $fiveFaceRotationData.rotationOffset)
+                    Stepper("Y Axis \(fiveFaceRotationData.yAxis)", value: $fiveFaceRotationData.yAxis)
+                    Stepper("Perspective \(fiveFaceRotationData.perspective)", value: $fiveFaceRotationData.perspective)
+                    HStack {
+                        Text("Anchor: ")
+                            .font(.title2)
+                        Text("\(fiveFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                    }
+                }
+
+                Section("Six") {
+                    HStack {
+                        Text("Degree: ")
+                            .font(.title2)
+                        TextField("Degree", value: $sixFaceRotationData.rotationDegree, format: .number)
+                    }
+
+                    Stepper("Offset \(sixFaceRotationData.rotationOffset)", value: $sixFaceRotationData.rotationOffset)
+                    Stepper("Y Axis \(sixFaceRotationData.yAxis)", value: $sixFaceRotationData.yAxis)
+                    Stepper("Perspective \(sixFaceRotationData.perspective)", value: $sixFaceRotationData.perspective)
+                    HStack {
+                        Text("Anchor: ")
+                            .font(.title2)
+                        Text("\(sixFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
+                    }
+                }
+
+
             }
 
             ZStack {
-                DiceView(dice: SixSidedDice.five)
+
+//                DiceView(dice: SixSidedDice.six)
+                ZStack {
+                    Text("6")
+                        .offset(.init(width: 24, height: 0))
+                    Rectangle()
+                        .stroke(Color.blue, lineWidth: 5)
+                        .opacity(0.2)
+                        .frame(width: 90, height: 90, alignment: .center)
+                }
+                    .modifier(DiceRotationViewModifier(rotationData: sixFaceRotationData))
+
+//                DiceView(dice: SixSidedDice.two)
+                ZStack {
+                    Text("2")
+                        .offset(.init(width: -24, height: 0))
+                    Rectangle()
+                        .stroke(Color.red, lineWidth: 5)
+                        .opacity(0.2)
+                        .frame(width: 90, height: 90, alignment: .center)
+                }
+                    .modifier(DiceRotationViewModifier(rotationData: twoFaceRotationData))
+
+//                DiceView(dice: SixSidedDice.five)
+                ZStack {
+                    Text("5")
+                        .offset(.init(width: 0, height: 24))
+                    Rectangle()
+                        .stroke(Color.green, lineWidth: 5)
+                        .opacity(0.9)
+                        .frame(width: 90, height: 90, alignment: .center)
+                }
                     .modifier(DiceRotationViewModifier(rotationData: fiveFaceRotationData))
 
-                DiceView(dice: SixSidedDice.one)
+//                DiceView(dice: SixSidedDice.one)
+                ZStack {
+                    Text("1")
+                        .offset(.init(width: 0, height: -24))
+                    Rectangle()
+                        .stroke(Color.orange, lineWidth: 5)
+                        .opacity(0.9)
+                        .frame(width: 90, height: 90, alignment: .center)
+                }
                     .modifier(DiceRotationViewModifier(rotationData: oneFaceRotationData))
-
             }
 
             HStack {
                 Button("Rotate Left") {
                     withAnimation() {
                         oneFaceRotationData.rotateLeft()
+                        twoFaceRotationData.rotateLeft()
                         fiveFaceRotationData.rotateLeft()
+                        sixFaceRotationData.rotateLeft()
                     }
                 }
                 .padding()
@@ -187,7 +287,9 @@ struct Dice3DView: View {
                 Button("Rotate Right") {
                     withAnimation {
                         oneFaceRotationData.rotateRight()
+                        twoFaceRotationData.rotateRight()
                         fiveFaceRotationData.rotateRight()
+                        sixFaceRotationData.rotateRight()
                     }
                 }
                 .padding()
