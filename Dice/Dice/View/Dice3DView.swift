@@ -40,6 +40,7 @@ protocol Side {
     var yAxis: CGFloat { get }
     var perspective: CGFloat { get }
     var anchor: UnitPoint { get }
+    var zIndex: Double { get }
     @discardableResult func next() -> Side
     @discardableResult func previous() -> Side
 }
@@ -58,11 +59,46 @@ extension Side {
     }
 }
 
+enum FaceSide: CaseIterable {
+    case front, left, right, back
+
+    var zIndex: Double {
+        switch self {
+            case .front: return 1
+            default: return 0
+        }
+    }
+
+    func rotateLeft() -> FaceSide {
+        switch self {
+            case .front: return .left
+            case .left: return .back
+            case .right: return .front
+            case .back: return .right
+        }
+    }
+
+    func rotateRight() -> FaceSide {
+        switch self {
+            case .front: return .right
+            case .left: return .front
+            case .right: return .back
+            case .back: return .left
+        }
+    }
+}
+
 class DiceSide: Side {
     var rotationDegree: Double
+    var zIndex: Double {
+        faceSide.zIndex
+    }
 
-    init(initialRotationDegree degree: Double) {
+    private var faceSide: FaceSide
+
+    init(initialRotationDegree degree: Double, faceSide: FaceSide) {
         self.rotationDegree = degree
+        self.faceSide = faceSide
     }
 
     var rotationOffset: CGFloat {
@@ -84,6 +120,7 @@ class DiceSide: Side {
             index += 1
         }
         rotationDegree += 90
+        faceSide = faceSide.rotateLeft()
         return self
     }
 
@@ -94,6 +131,7 @@ class DiceSide: Side {
             index -= 1
         }
         rotationDegree -= 90
+        faceSide = faceSide.rotateRight()
         return self
     }
 }
@@ -102,11 +140,13 @@ class RotationData: ObservableObject {
     @Published var rotationDegree: Double
     @Published var rotationOffset: CGFloat
 
-    @Published  var yAxis: CGFloat
-    @Published  var perspective: CGFloat
-    @Published  var anchor: UnitPoint
+    @Published var yAxis: CGFloat
+    @Published var perspective: CGFloat
+    @Published var anchor: UnitPoint
 
-    @Published  var side: Side
+    @Published var side: Side
+
+    @Published var zIndex: Double
 
     init(side: Side) {
         self.side = side
@@ -115,6 +155,7 @@ class RotationData: ObservableObject {
         self.yAxis = side.yAxis
         self.perspective = side.perspective
         self.anchor = side.anchor
+        self.zIndex = side.zIndex
     }
 
     func rotateLeft() {
@@ -131,6 +172,7 @@ class RotationData: ObservableObject {
         yAxis = side.yAxis
         perspective = side.perspective
         anchor = side.anchor
+        zIndex = side.zIndex
         self.side = side
     }
 }
@@ -138,16 +180,16 @@ class RotationData: ObservableObject {
 struct Dice3DView: View {
 
     @ObservedObject
-    var oneFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0))
+    var oneFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0, faceSide: .front))
 
     @ObservedObject
-    var twoFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90))
+    var twoFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90, faceSide: .right).next().next())
 
     @ObservedObject
-    var fiveFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90))
+    var fiveFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 90, faceSide: .right))
 
     @ObservedObject
-    var sixFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0).next().next())
+    var sixFaceRotationData = RotationData(side: DiceSide(initialRotationDegree: 0, faceSide: .front).next().next())
 
 
     var body: some View {
@@ -219,54 +261,20 @@ struct Dice3DView: View {
                         Text("\(sixFaceRotationData.anchor == .leading ? "Leading" : "Trailing")")
                     }
                 }
-
-
             }
 
             ZStack {
 
-//                DiceView(dice: SixSidedDice.six)
-                ZStack {
-                    Text("6")
-                        .offset(.init(width: 24, height: 0))
-                    Rectangle()
-                        .stroke(Color.blue, lineWidth: 5)
-                        .opacity(0.2)
-                        .frame(width: 90, height: 90, alignment: .center)
-                }
+                DiceView(dice: SixSidedDice.six)
                     .modifier(DiceRotationViewModifier(rotationData: sixFaceRotationData))
 
-//                DiceView(dice: SixSidedDice.two)
-                ZStack {
-                    Text("2")
-                        .offset(.init(width: -24, height: 0))
-                    Rectangle()
-                        .stroke(Color.red, lineWidth: 5)
-                        .opacity(0.2)
-                        .frame(width: 90, height: 90, alignment: .center)
-                }
+                DiceView(dice: SixSidedDice.two)
                     .modifier(DiceRotationViewModifier(rotationData: twoFaceRotationData))
 
-//                DiceView(dice: SixSidedDice.five)
-                ZStack {
-                    Text("5")
-                        .offset(.init(width: 0, height: 24))
-                    Rectangle()
-                        .stroke(Color.green, lineWidth: 5)
-                        .opacity(0.9)
-                        .frame(width: 90, height: 90, alignment: .center)
-                }
+                DiceView(dice: SixSidedDice.five)
                     .modifier(DiceRotationViewModifier(rotationData: fiveFaceRotationData))
 
-//                DiceView(dice: SixSidedDice.one)
-                ZStack {
-                    Text("1")
-                        .offset(.init(width: 0, height: -24))
-                    Rectangle()
-                        .stroke(Color.orange, lineWidth: 5)
-                        .opacity(0.9)
-                        .frame(width: 90, height: 90, alignment: .center)
-                }
+                DiceView(dice: SixSidedDice.one)
                     .modifier(DiceRotationViewModifier(rotationData: oneFaceRotationData))
             }
 
@@ -317,6 +325,7 @@ struct DiceRotationViewModifier: ViewModifier {
                 perspective: rotationData.perspective
             )
             .offset(.init(width: rotationData.rotationOffset, height: 0))
+            .zIndex(rotationData.zIndex)
     }
 }
 

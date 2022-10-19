@@ -24,6 +24,7 @@
 		587FA0D028F76FCE00CF7AF5 /* Dice3DView_old.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587FA0CF28F76FCE00CF7AF5 /* Dice3DView_old.swift */; };
 		58C070CE28F739E300CE50D6 /* PreviewDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C070CD28F739E300CE50D6 /* PreviewDataController.swift */; };
 		58F03C0128FF3E2A002B3072 /* Dice3DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F03C0028FF3E2A002B3072 /* Dice3DView.swift */; };
+		58F03C0329009700002B3072 /* BoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F03C0229009700002B3072 /* BoxView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		587FA0CF28F76FCE00CF7AF5 /* Dice3DView_old.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice3DView_old.swift; sourceTree = "<group>"; };
 		58C070CD28F739E300CE50D6 /* PreviewDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataController.swift; sourceTree = "<group>"; };
 		58F03C0028FF3E2A002B3072 /* Dice3DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice3DView.swift; sourceTree = "<group>"; };
+		58F03C0229009700002B3072 /* BoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				5812C60E28F6101100AB3325 /* SheetView.swift */,
 				587FA0CF28F76FCE00CF7AF5 /* Dice3DView_old.swift */,
 				58F03C0028FF3E2A002B3072 /* Dice3DView.swift */,
+				58F03C0229009700002B3072 /* BoxView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				5812C60528F2F9C900AB3325 /* LogoView.swift in Sources */,
 				5812C5FC28EF7DCA00AB3325 /* Dice.swift in Sources */,
 				5812C5CE28EF702300AB3325 /* DiceApp.swift in Sources */,
+				58F03C0329009700002B3072 /* BoxView.swift in Sources */,
 				5812C60F28F6101100AB3325 /* SheetView.swift in Sources */,
 				5812C60D28F5FACC00AB3325 /* DiceRolls.xcdatamodeld in Sources */,
 				58F03C0128FF3E2A002B3072 /* Dice3DView.swift in Sources */,
