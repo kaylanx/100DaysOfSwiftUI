@@ -45,19 +45,19 @@ protocol Side {
     @discardableResult func previous() -> Side
 }
 
-extension Side {
-    var yAxis: CGFloat {
-        -1.0
-    }
-
-    var perspective: CGFloat {
-        0.1
-    }
-
-    var anchor: UnitPoint {
-        .trailing
-    }
-}
+//extension Side {
+//    var yAxis: CGFloat {
+//        -1.0
+//    }
+//
+//    var perspective: CGFloat {
+//        0.1
+//    }
+//
+//    var anchor: UnitPoint {
+//        .trailing
+//    }
+//}
 
 enum FaceSide: CaseIterable {
     case front, left, right, back
@@ -105,12 +105,45 @@ class DiceSide: Side {
         offsets[index]
     }
 
+    var perspective: CGFloat {
+        perspectives[index]
+    }
+
+    var anchor: UnitPoint {
+        anchors[index]
+    }
+
+    var yAxis: CGFloat {
+        yAxes[index]
+    }
+
     private var index = 0
     private let offsets: [CGFloat] = [
         0,
         -90,
         -90,
         0
+    ]
+
+    private let perspectives: [CGFloat] = [
+        0.1,
+        -0.1,
+        0.1,
+        -0.1
+    ]
+
+    private let anchors: [UnitPoint] = [
+        .trailing,
+        .trailing,
+        .trailing,
+        .trailing
+    ]
+
+    private let yAxes: [CGFloat] = [
+        -1.0,
+        1.0,
+        1.0,
+        1.0
     ]
 
     func next() -> Side {
@@ -266,15 +299,19 @@ struct Dice3DView: View {
             ZStack {
 
                 DiceView(dice: SixSidedDice.six)
+                    .overlay(Text("Back").foregroundColor(.white))
                     .modifier(DiceRotationViewModifier(rotationData: sixFaceRotationData))
 
                 DiceView(dice: SixSidedDice.two)
+                    .overlay(Text("Left").foregroundColor(.white))
                     .modifier(DiceRotationViewModifier(rotationData: twoFaceRotationData))
 
                 DiceView(dice: SixSidedDice.five)
+                    .overlay(Text("Right").foregroundColor(.white))
                     .modifier(DiceRotationViewModifier(rotationData: fiveFaceRotationData))
 
                 DiceView(dice: SixSidedDice.one)
+                    .overlay(Text("Front").foregroundColor(.white))
                     .modifier(DiceRotationViewModifier(rotationData: oneFaceRotationData))
             }
 
