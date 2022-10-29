@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ResortView: View {
 
-    @Environment(\.horizontalSizeClass) private var sizeClass
-    @Environment(\.dynamicTypeSize) var typeSize
-
     let resort: Resort
+
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.dynamicTypeSize) private var typeSize
+
+    @EnvironmentObject private var favorites: Favorites
+
+    @State private var selectedFacility: Facility?
+    @State private var showingFacility = false
 
     var body: some View {
         ScrollView {
@@ -34,14 +39,41 @@ struct ResortView: View {
                     Text("Facilities")
                         .font(.headline)
 
-                    Text(resort.facilities, format: .list(type: .and))
-                        .padding(.vertical)
+                    HStack {
+                        ForEach(resort.facilityTypes) { facility in
+                            Button {
+                                selectedFacility = facility
+                                showingFacility = true
+                            } label: {
+                                facility.icon
+                                    .font(.title)
+                            }
+                        }
+                    }
+                    .padding(.vertical)
                 }
                 .padding(.horizontal)
             }
+
+            Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
+                if favorites.contains(resort) {
+                    favorites.remove(resort)
+                } else {
+                    favorites.add(resort)
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .padding()
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
+        .alert(
+            selectedFacility?.rawValue ?? "More information",
+            isPresented: $showingFacility, presenting: selectedFacility
+        ) { _ in
+        } message: { facility in
+            Text(facility.description)
+        }
     }
 
     @ViewBuilder
