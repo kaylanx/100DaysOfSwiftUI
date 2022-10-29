@@ -22,9 +22,7 @@ struct ResortView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Image(decorative: resort.id)
-                    .resizable()
-                    .scaledToFit()
+                resortImage
 
                 HStack {
                     details
@@ -35,35 +33,12 @@ struct ResortView: View {
                 Group {
                     Text(resort.description)
                         .padding(.vertical)
-
-                    Text("Facilities")
-                        .font(.headline)
-
-                    HStack {
-                        ForEach(resort.facilityTypes) { facility in
-                            Button {
-                                selectedFacility = facility
-                                showingFacility = true
-                            } label: {
-                                facility.icon
-                                    .font(.title)
-                            }
-                        }
-                    }
-                    .padding(.vertical)
+                    facilities
                 }
                 .padding(.horizontal)
             }
 
-            Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
-                if favorites.contains(resort) {
-                    favorites.remove(resort)
-                } else {
-                    favorites.add(resort)
-                }
-            }
-            .buttonStyle(.borderedProminent)
-            .padding()
+            favoritesButton
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
@@ -76,6 +51,19 @@ struct ResortView: View {
         }
     }
 
+    private var resortImage: some View {
+        Image(decorative: resort.id)
+            .resizable()
+            .scaledToFit()
+            .overlay(alignment: .bottomTrailing) {
+                Text("Image by \(resort.imageCredit)")
+                    .padding(.trailing, 2)
+                    .padding(.bottom, 2)
+                    .foregroundColor(.black.opacity(0.5))
+                    .font(.caption)
+            }
+    }
+
     @ViewBuilder
     private var details: some View {
         if sizeClass == .compact && typeSize > .large {
@@ -86,10 +74,43 @@ struct ResortView: View {
             SkiDetailsView(resort: resort)
         }
     }
+
+    private var favoritesButton: some View {
+        Button(favorites.contains(resort) ? "Remove from Favorites" : "Add to Favorites") {
+            if favorites.contains(resort) {
+                favorites.remove(resort)
+            } else {
+                favorites.add(resort)
+            }
+        }
+        .buttonStyle(.borderedProminent)
+        .padding()
+    }
+
+    @ViewBuilder
+    private var facilities: some View {
+        Text("Facilities")
+            .font(.headline)
+
+        HStack {
+            ForEach(resort.facilityTypes) { facility in
+                Button {
+                    selectedFacility = facility
+                    showingFacility = true
+                } label: {
+                    facility.icon
+                        .font(.title)
+                }
+            }
+        }
+        .padding(.vertical)
+    }
+
 }
 
 struct ResortView_Previews: PreviewProvider {
     static var previews: some View {
         ResortView(resort: Resort.previewResort)
+            .environmentObject(Favorites())
     }
 }
