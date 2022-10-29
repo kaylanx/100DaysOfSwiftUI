@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ResortView: View {
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    @Environment(\.dynamicTypeSize) var typeSize
+
     let resort: Resort
 
     var body: some View {
@@ -19,8 +22,7 @@ struct ResortView: View {
                     .scaledToFit()
 
                 HStack {
-                    ResortDetailsView(resort: resort)
-                    SkiDetailsView(resort: resort)
+                    details
                 }
                 .padding(.vertical)
                 .background(Color.primary.opacity(0.1))
@@ -40,6 +42,17 @@ struct ResortView: View {
         }
         .navigationTitle("\(resort.name), \(resort.country)")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder
+    private var details: some View {
+        if sizeClass == .compact && typeSize > .large {
+            VStack(spacing: 10) { ResortDetailsView(resort: resort) }
+            VStack(spacing: 10) { SkiDetailsView(resort: resort) }
+        } else {
+            ResortDetailsView(resort: resort)
+            SkiDetailsView(resort: resort)
+        }
     }
 }
 
