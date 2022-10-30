@@ -7,20 +7,50 @@
 
 import SwiftUI
 
+enum SortBy: String, CaseIterable {
+    case `default` = "Default"
+    case alphabetical = "Alphabetical"
+    case country = "Country"
+}
+
+extension Array where Element == Resort {
+    func sorted(by sortBy: SortBy) -> [Resort] {
+        switch sortBy {
+            case .default:
+                return self.sorted { lhs, rhs in
+                    lhs.order < rhs.order
+                }
+            case .alphabetical:
+                return self.sorted { lhs, rhs in
+                    lhs.name < rhs.name
+                }
+            case .country:
+                return self.sorted { lhs, rhs in
+                    lhs.country < rhs.country
+                }
+        }
+    }
+}
+
 struct ContentView: View {
 
     @StateObject var favorites = Favorites()
 
     @State private var searchText = ""
-    let resorts: [Resort] = Bundle.main.decode("resorts.json")
+
+    let resorts: [Resort] = ContentView.loadData()
 
     private var filteredResorts: [Resort] {
         if searchText.isEmpty {
             return resorts
+                .sorted(by: sortBy)
         } else {
             return resorts.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+                .sorted(by: sortBy)
         }
     }
+
+    @State private var sortBy = SortBy.default
 
     var body: some View {
         NavigationView {
@@ -59,12 +89,32 @@ struct ContentView: View {
             }
             .navigationTitle("Resorts")
             .searchable(text: $searchText, prompt: "Search for a resort")
+            .toolbar {
+                Menu {
+                    Picker("Choose a sort order", selection: $sortBy) {
+                        ForEach(SortBy.allCases, id: \.self) {
+                            Text($0.rawValue)
+                        }
+                    }
+                } label: {
+                    Image(systemName: "arrow.up.arrow.down")
+                }
+            }
 
 
             WelcomeView()
         }
         .environmentObject(favorites)
+    }
 
+    private static func loadData() -> [Resort] {
+        var order = 0
+        let resorts: [Resort] = Bundle.main.decode("resorts.json")
+        return resorts.map {
+            let resort = Resort.resort($0, withOrder: order)
+            order += 1
+            return resort
+        }
     }
 }
 
